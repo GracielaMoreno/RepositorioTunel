@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">TunelApp</string>
+    <string name="app_name">Telepeaje</string>
+    <string name="servidor_tramas">200.105.229.50</string>
+    <string name="g_opcion_1">Recarga de Tag</string>
+    <string name="g_opcion_2">Cambio de vehículo </string>
+    <string name="g_opcion_3">Autorización de débito automático</string>
+
 </resources>
