@@ -1,9 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="16dp"
+    android:background="@color/fondo"
     tools:context=".Login">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/app_cabe_logo_epmmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/lbltitulo"
+                android:layout_width="291dp"
+                android:layout_height="26dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:inputType="textPersonName"
+                android:text="Bienvenido"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+            <TextView
+                android:id="@+id/lbllogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="50dp"
+                android:text="Cédula o RUC" />
+
+
+            <EditText
+                android:id="@+id/txtLogin"
+                android:layout_width="321dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="70dp"
+                android:ems="10"
+                android:hint=""
+                android:inputType="number"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/lblcontraseña"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="120dp"
+                android:text="Contraseña" />
+
+
+            <EditText
+                android:id="@+id/txtPass"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="140dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint=""
+                android:text="" />
+
+            <CheckBox
+                android:id="@+id/chk_reco_cred"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="190dp"
+                android:text="Recordar Credenciales" />
+
+
+            <Button
+                android:id="@+id/btnIngresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="240dp"
+                android:background="@color/colorPrimary"
+                android:onClick="ingresar"
+                android:text="Ingresar"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/lblIndicacion1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/lblIndicacion2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblIndicacion1"
+                android:layout_marginTop="20dp"
+                android:text=""/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <ImageButton
+                android:id="@+id/btn_urba_1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="ingresarUrbanizacion1"
+                android:src="@drawable/soli_clav_llave"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                android:layout_above="@+id/txt_urba_1">
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/btn_urba_2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:onClick="ingresarUrbanizacion2"
+                android:src="@drawable/soli_clav_llave"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                android:layout_centerHorizontal="true"
+                android:layout_alignTop="@+id/btn_urba_1">
+
+            </ImageButton>
+
+            <ImageButton
+                android:id="@+id/btn_urba_3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:onClick="ingresarUrbanizacion3"
+                android:src="@drawable/soli_clav_llave"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:visibility="invisible">
+            </ImageButton>
+
+
+            <ImageButton
+                android:id="@+id/btn_urba_4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:onClick="ingresarUrbanizacion4"
+                android:src="@drawable/soli_clav_llave"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                android:layout_above="@+id/btn_urba_1"
+                android:layout_marginBottom="8dp">
+
+            </ImageButton>
+
+
+            <TextView
+                android:id="@+id/txt_urba_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AdmitKey"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:lines="2"
+                android:visibility="invisible"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/btn_urba_1"
+                android:layout_alignStart="@+id/btn_urba_1"
+                android:layout_alignRight="@+id/btn_urba_1"
+                android:layout_alignEnd="@+id/btn_urba_1" />
+
+            <TextView
+                android:id="@+id/txt_urba_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:text="AdmitKey"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:lines="2"
+                android:visibility="invisible"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/btn_urba_2"
+                android:layout_alignStart="@+id/btn_urba_2"
+                android:layout_marginStart="7dp"
+                android:layout_alignRight="@+id/btn_urba_2"
+                android:layout_alignEnd="@+id/btn_urba_2" />
+
+            <TextView
+                android:id="@+id/txt_urba_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AdmitKey"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:lines="2"
+                android:visibility="invisible"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/btn_urba_3"
+                android:layout_alignStart="@+id/btn_urba_3"
+                android:layout_alignRight="@+id/btn_urba_3"
+                android:layout_alignEnd="@+id/btn_urba_3" />
+
+            <TextView
+                android:id="@+id/txt_urba_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AdmitKey"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:lines="2"
+                android:visibility="invisible"
+                android:layout_alignTop="@+id/btn_urba_4"
+                android:layout_alignRight="@+id/btn_urba_2"
+                android:layout_alignEnd="@+id/btn_urba_2"
+                android:layout_marginRight="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="19dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
