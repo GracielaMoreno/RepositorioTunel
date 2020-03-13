@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="16dp"
+    android:background="@color/fondo"
+    tools:context=".Actu_plac">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/img_regresar"
+                    android:layout_width="30dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/app_regresar"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"/>
+                <ImageView
+                    android:id="@+id/img_cabecera"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/app_cabe_logo_tele"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/lbltitulo"
+                    android:layout_width="291dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Actualización de vehículo"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+                <TextView
+                    android:id="@+id/lblNota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/lbltitulo"
+                    android:text="Estimado cliente:"
+                    />
+
+                <TextView
+                    android:id="@+id/lblNota0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/lbltitulo"
+                    android:text="- Este proceso le permite cambiar los datos del vehículo al cual se encuentra atado el dispositivo TAG."
+                    />
+
+                <TextView
+                    android:id="@+id/lblNota1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/lblNota0"
+                    android:text="- Recuerde, el TAG es personal y debe ser utilizado solo en el vehículo enrolado."
+                    />
+
+                <TextView
+                    android:id="@+id/lblNota2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/lblNota1"
+                    android:text="- Para realizar este proceso tenga a mano la matrícula del vehículo y la cédula del cliente."
+                    />
+
+                <TextView
+                    android:id="@+id/lbltitulo1"
+                    android:layout_width="291dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Pasos a seguir"
+                    android:layout_below="@+id/lblNota2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+
+                <TextView
+                    android:id="@+id/lblNota5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/lblNota3"
+                    android:text="Paso 1: Fotografíe la matrícula del vehículo y la cédula del cliente."
+                    />
+
+                <TextView
+                    android:id="@+id/lblNota6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/lblNot5"
+                    android:text="Paso 2: Presione el botón Enviar Información."
+                    />
+
+                <TextView
+                    android:id="@+id/lblNota7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/lblNota6"
+                    android:text="Paso 3: Una vez realizado este proceso, debe esperar 24 horas, cuando la información enviada haya sido validada recibirá un correo confirmando el cambio de vehículo."
+                    />
+
+                <Button
+                    android:id="@+id/btnContinuar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/txtPlaca"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="btn_continuar"
+                    android:text="Fotografiar Documentos"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+                />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lblMensaje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_marginTop="20dp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>
+
+
+
+
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Actu_plac_foto">
+
+    <Button
+        android:id="@+id/btnMatricula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:background="@color/colorPrimary"
+        android:text="Fotografiar Matrícula del Vehículo"
+        android:layout_marginTop="15dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_matricula"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/actu_plac_foto_matr"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnMatricula"
+        />
+
+    <Button
+        android:id="@+id/btnCedula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/img_matricula"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:text="Fotografiar Cédula del Cliente"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_cedula"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/actu_plac_foto_cedu"
+        android:layout_below="@+id/btnCedula"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btnContinuar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/img_cedula"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimary"
+
+        android:text = "Enviar Información"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+</RelativeLayout>

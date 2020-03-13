@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="procelec.telepeaje.Temp_list">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/txtCampo2"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Placa"
+            android:textColor="@color/fondo"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/txtVacio"
+            android:layout_width="5dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/txtCampo2"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation ="vertical"
+            android:layout_toRightOf="@+id/txtVacio">
+            <TextView
+                android:id="@+id/txtCampo3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tag"
+                android:layout_alignParentTop="true"/>
+            <TextView
+                android:id="@+id/txtCampo4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Modelo"
+                android:layout_below="@+id/txtCampo3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/txtCampo5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txtCampo4"
+                android:text="Saldo"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtVacio1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout2"
+        android:layout_alignStart="@+id/relativeLayout2"
+        android:layout_below="@+id/relativeLayout2" />
+</RelativeLayout>
+
+
+
+
+
+
+
+

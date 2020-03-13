@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/opcion_1"
+        android:icon="@drawable/xime"
+        android:title="@string/g_opcion_1" />
+    <item android:id="@+id/opcion_2"
+        android:icon="@drawable/xime"
+        android:title="@string/g_opcion_2" />
+    <item android:id="@+id/opcion_3"
+        android:icon="@drawable/xime"
+        android:title="@string/g_opcion_3" />
+</menu>

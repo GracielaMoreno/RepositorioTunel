@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.StrictMode;
+import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -31,19 +32,12 @@ public class Login extends AppCompatActivity {
     CheckBox chkRecoCred;
     TextView lblUsuario;
     TextView lblContrasenia;
-    TextView lblUrba1;
-    TextView lblUrba2;
-    TextView lblUrba3;
-    TextView lblUrba4;
-    ImageButton btnUrba1;
-    ImageButton btnUrba2;
-    ImageButton btnUrba3;
-    ImageButton btnUrba4;
     ImageButton btnAdmit;
     String envia="";
     String l="";
     String p="";
     String vehiculos = "";
+    String Valor= "";
     private String[] vectorUrbanizacion;
     public static final String SHARED_PREFS = "N/A";
     private int seleccion = 0;
@@ -93,18 +87,6 @@ public class Login extends AppCompatActivity {
         txtPass = (EditText)findViewById(R.id.txtPass);
         chkRecoCred = (CheckBox)findViewById(R.id.chk_reco_cred);
 
-        lblUrba1 = (TextView)findViewById(R.id.txt_urba_1);
-        lblUrba2 = (TextView)findViewById(R.id.txt_urba_2);
-        lblUrba3 = (TextView)findViewById(R.id.txt_urba_3);
-        lblUrba4 = (TextView)findViewById(R.id.txt_urba_4);
-
-        btnUrba1 = (ImageButton)findViewById(R.id.btn_urba_1);
-        btnUrba2 = (ImageButton)findViewById(R.id.btn_urba_2);
-        btnUrba3 = (ImageButton)findViewById(R.id.btn_urba_3);
-        btnUrba4 = (ImageButton)findViewById(R.id.btn_urba_4);
-
-
-        cargaInicial();
     }
 
     @Override
@@ -173,6 +155,7 @@ public class Login extends AppCompatActivity {
         String CodigoUsuario;
         String TramaRecida;
 
+
         l=txtLogin.getText().toString();
         p=txtPass.getText().toString();
         if (l.equals("") || p.equals("")){
@@ -187,33 +170,48 @@ public class Login extends AppCompatActivity {
 
             //TramaRecida = ob.cadena.toString();
             TramaRecida = "1|Bienvenido|Ximena Tapia|100|1-PTJ560-1210123456-CHEVROLET AVEO 2012-20*2-PTR2589-1210123457-KIA SPORTAGE R2 2013-10*3-IBQ2563-1210123458-KIA SORENTE 2018-24*4-TZA0987-1210123458-KIA SORENTE 2018-24*5-PTJ565-1210123458-KIA SORENTE 2018-24*6-PTJ566-1210123458-KIA SORENTE 2018-24*7-PTJ567-1210123458-KIA SORENTE 2018-24*8-PTJ568-1210123458-KIA SORENTE 2018-24*9-PTJ569-1210123458-KIA SORENTE 2018-24*10-PTJ510-1210123458-KIA SORENTE 2018-24";
-
+            //TramaRecida="2|20.00";
             String[] vectorTramaRecibida = TramaRecida.split("\\|");
             CodigoResp=vectorTramaRecibida[0];
-            Mensaje=vectorTramaRecibida[1];
-            Usuario=vectorTramaRecibida[2];
-            CodigoUsuario=vectorTramaRecibida[3];
-            vehiculos = vectorTramaRecibida[4];
 
-            Toast.makeText(this, Mensaje + " " + Usuario, Toast.LENGTH_LONG).show();
+
 
             //usuario con una sola urbanizaion con esas credenciales
             if (CodigoResp.equals("1")){
+                if(vectorTramaRecibida.length==5){
+                Mensaje=vectorTramaRecibida[1];
+                Usuario=vectorTramaRecibida[2];
+                CodigoUsuario=vectorTramaRecibida[3];
+                vehiculos = vectorTramaRecibida[4];
+                Toast.makeText(this, Mensaje + " " + Usuario, Toast.LENGTH_LONG).show();
+
                 //usuario selecciona guardar credenciales
                 //if (chkRecoCred.isChecked()){
                 //  guardar(view);
                 //}
                 limpiar(view);
                 //verificar(CodigoUsuario, Usuario);
-                ver_list_tags(CodigoUsuario, Usuario, vehiculos);
+                ver_list_tags(CodigoUsuario, Usuario, vehiculos);}
+                else{
+                    Toast.makeText(this,"Intente nuevamente problemas de comunicación", Toast.LENGTH_LONG).show();
+
+                }
+            }
+            if (CodigoResp.equals("2")){
+                if (vectorTramaRecibida.length==2){
+                Valor=vectorTramaRecibida[1];
+                    PopUp();
+                }else{
+                    Toast.makeText(this,"Intente nuevamente problemas de comunicación", Toast.LENGTH_LONG).show();
+                }
+
+
+
             }
         }
     }
 
-    //boton de acceso a la urbanizacion 1
-    //boton de acceso a la urbanizacion 2
-    //boton de acceso a la urbanizacion 3
-    //boton de acceso a la urbanizacion 4
+
 
     public void ver_list_tags(String codigoUsuario, String nombreUsuario, String vehiculos)
     {
@@ -221,95 +219,26 @@ public class Login extends AppCompatActivity {
         bundle.putString("CodigoUsuario" ,codigoUsuario);
         bundle.putString("NombreUsuario" ,nombreUsuario);
         bundle.putString("Vehiculos" ,vehiculos);
-        //------------------------Intent i = new Intent(Login.this, List_tags.class );
-        Intent i = new Intent(Login.this, Portada.class );
+        Intent i = new Intent(Login.this, List_tags.class );
+
         i.putExtras(bundle);
         startActivity(i);
         finish();
     }
 
-
-    //metodo que busca las urbanizaciones registradas para mostrar en el inicio
-    public void cargaInicial()
-    {
-        int a = 0;
-        //validar que credenciales estan guardadas
-        //urbanizacion 1
-        SharedPreferences preferencias = getSharedPreferences("urbanizacion1", Context.MODE_PRIVATE);
-
-        String codigoUrba1 = preferencias.getString("codigo", SHARED_PREFS);
-        String nombreUrba1 = preferencias.getString("nombre", SHARED_PREFS);
-
-        if (!codigoUrba1.equals(SHARED_PREFS) || !nombreUrba1.equals(SHARED_PREFS))
-        {
-            lblUrba1.setVisibility(View.VISIBLE);
-            btnUrba1.setVisibility(View.VISIBLE);
-            btnUrba1.setImageResource(R.drawable.logi_llave);
-            lblUrba1.setText(nombreUrba1);
-        }else
-        {
-            lblUrba1.setText("AdmitKey");
-            lblUrba1.setVisibility(View.INVISIBLE);
-            a=a+1;
-        }
-        //urbanizacion 2
-        SharedPreferences preferencias2 = getSharedPreferences("urbanizacion2", Context.MODE_PRIVATE);
-
-        String codigoUrba2 = preferencias2.getString("codigo", SHARED_PREFS);
-        String nombreUrba2 = preferencias2.getString("nombre", SHARED_PREFS);
-
-        if (!codigoUrba2.equals(SHARED_PREFS) || !nombreUrba2.equals(SHARED_PREFS))
-        {
-            lblUrba2.setVisibility(View.VISIBLE);
-            btnUrba2.setVisibility(View.VISIBLE);
-            btnUrba2.setImageResource(R.drawable.logi_llave);
-            lblUrba2.setText(nombreUrba2);
-        }
-        else
-        {
-            lblUrba2.setText("AdmitKey");
-            lblUrba2.setVisibility(View.INVISIBLE);
-            a=a+1;
-        }
-        //urbanizacion 3
-        SharedPreferences preferencias3 = getSharedPreferences("urbanizacion3", Context.MODE_PRIVATE);
-
-        String codigoUrba3 = preferencias3.getString("codigo", SHARED_PREFS);
-        String nombreUrba3 = preferencias3.getString("nombre", SHARED_PREFS);
-
-        if (!codigoUrba3.equals(SHARED_PREFS) || !nombreUrba3.equals(SHARED_PREFS))
-        {
-            lblUrba3.setVisibility(View.VISIBLE);
-            btnUrba3.setVisibility(View.VISIBLE);
-            btnUrba3.setImageResource(R.drawable.logi_llave);
-            lblUrba3.setText(nombreUrba3);
-        }
-        else
-        {
-            lblUrba3.setText("AdmitKey");
-            btnUrba3.setVisibility(View.INVISIBLE);
-            a=a+1;
-        }
-
-        //urbanizacion 4
-        SharedPreferences preferencias4 = getSharedPreferences("urbanizacion4", Context.MODE_PRIVATE);
-
-        String codigoUrba4 = preferencias4.getString("codigo", SHARED_PREFS);
-        String nombreUrba4 = preferencias4.getString("nombre", SHARED_PREFS);
-
-        if (!codigoUrba4.equals(SHARED_PREFS) || !nombreUrba4.equals(SHARED_PREFS))
-        {
-            lblUrba4.setVisibility(View.VISIBLE);
-            btnUrba4.setVisibility(View.VISIBLE);
-            btnUrba4.setImageResource(R.drawable.logi_llave);
-            lblUrba4.setText(nombreUrba3);
-        }
-        else
-        {
-            lblUrba4.setText("AdmitKey");
-            btnUrba4.setVisibility(View.INVISIBLE);
-            a=a+1;
-        }
-
+    public void PopUp(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Tiene un valor pendiente"+"$"+Valor)
+                .setTitle("Pagos")
+                .setCancelable(false)
+                .setNeutralButton("Pagar",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent i = new Intent(Login.this, Cls_por_implementar.class );
+                                startActivity(i);
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
