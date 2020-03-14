@@ -1,5 +1,6 @@
 package com.example.cheli.tunelapp;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -32,6 +33,7 @@ public class Login extends AppCompatActivity {
     CheckBox chkRecoCred;
     TextView lblUsuario;
     TextView lblContrasenia;
+
     ImageButton btnAdmit;
     String envia="";
     String l="";
@@ -42,6 +44,7 @@ public class Login extends AppCompatActivity {
     public static final String SHARED_PREFS = "N/A";
     private int seleccion = 0;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -155,7 +158,6 @@ public class Login extends AppCompatActivity {
         String CodigoUsuario;
         String TramaRecida;
 
-
         l=txtLogin.getText().toString();
         p=txtPass.getText().toString();
         if (l.equals("") || p.equals("")){
@@ -185,6 +187,8 @@ public class Login extends AppCompatActivity {
                 vehiculos = vectorTramaRecibida[4];
                 Toast.makeText(this, Mensaje + " " + Usuario, Toast.LENGTH_LONG).show();
 
+            //usuario con una sola urbanizaion con esas credenciales
+            if (CodigoResp.equals("1")){
                 //usuario selecciona guardar credenciales
                 //if (chkRecoCred.isChecked()){
                 //  guardar(view);

@@ -1,6 +1,8 @@
 package com.example.cheli.tunelapp;
 
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -30,7 +32,6 @@ public void cerrar(){
 public void conectar() {
         try{
         socket = new Socket(dstAddress, dstPort);
-        System.out.print("Conectado...");
         } catch (IOException e) {
         e.printStackTrace();
         }finally{
