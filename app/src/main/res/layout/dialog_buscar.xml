@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/CedulaSoli"
+        android:layout_width="500px"
+        android:layout_height="140dp"
+        android:layout_margin="20dp"
+        android:hint="Cédula o RUC"
+        android:inputType="textEmailAddress" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/lblMensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estimado usuario, una vez enviada la solicitud de clave, esta le llegará al correo electrónico registrado. Si desea actualizar su correo electrónico debe acercarse a los Centros de Atención ubicados en Scala Shopping o en el Municipio Zona Norte"
+            android:layout_margin="20dp" />
+
+
+    </RelativeLayout>ç
+</LinearLayout>

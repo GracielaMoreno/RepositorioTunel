@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.TransactionTooLargeException;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
@@ -33,7 +34,7 @@ public class List_tags extends Activity {
     private String[] vectorVehiculos;
     private String[] vectorVehiculo;
     private cls_list_tags_adap ListTagsAdapter;
-
+    private String cut_codigo="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -84,7 +85,7 @@ public class List_tags extends Activity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               //vehiculos.getItemAtPosition(position)
+               //vehiculos.getItemAtPosition(position).
                 Toast.makeText(List_tags.this, "Mantenga presionado el item para ver opciones", Toast.LENGTH_LONG).show();
 
             }
@@ -92,8 +93,11 @@ public class List_tags extends Activity {
 listTags.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-        String listChoice = listTags.getItemAtPosition (position).toString();
-        Log.i("Click", "click en el elemento " + listChoice );
+
+        String listChoice =  ListTagsAdapter.getItem(position).toString();
+        cls_list_tags p = (cls_list_tags) listTags.getItemAtPosition(position);
+        cut_codigo= p.getCampo1();
+       // Log.i("Click", "click en el elemento " +);
         return false;
     }
 });
@@ -129,10 +133,12 @@ listTags.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 return true;
             case R.id.opcion_2:
                 //
+
                 Bundle bundle = new Bundle();
                 bundle.putString("cl_codigo" ,codigoUsuario);
 
-                bundle.putString("cut_codigo" ,codigoUsuario);
+                bundle.putString("cut_codigo" ,cut_codigo);
+
                 Intent i = new Intent(List_tags.this, Actu_plac.class );
                 i.putExtras(bundle);
                 startActivity(i);

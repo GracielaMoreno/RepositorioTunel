@@ -19,15 +19,10 @@ String codigoVehiculo="";
         ImageView img = (ImageView) findViewById(R.id.img_regresar);
         img.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Intent intent = new Intent( Actu_plac.this, List_tags.class );
-                Intent intent = new Intent( Actu_plac.this, Login.class );
-                Bundle bundle = new Bundle();
-                bundle.putString("cl_codigo" ,codigoUsuario);
-                bundle.putString("cut_codigo" ,codigoVehiculo);
                 Intent i = new Intent(Actu_plac.this, Actu_plac_foto.class );
-                i.putExtras(bundle);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+
+                i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(i);
                 finish();
             }
         });
@@ -36,6 +31,10 @@ String codigoVehiculo="";
 
     public void btn_continuar(View view) {
         Intent i = new Intent(Actu_plac.this, Actu_plac_foto.class );
+        Bundle bundle = new Bundle();
+        bundle.putString("cl_codigo" ,codigoUsuario);
+        bundle.putString("cut_codigo" ,codigoVehiculo);
+        i.putExtras(bundle);
         Log.e("",codigoUsuario+"cut"+codigoVehiculo);
 
         startActivity(i);

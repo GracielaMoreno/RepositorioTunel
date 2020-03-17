@@ -56,4 +56,5 @@ public class cls_list_tags_adap extends BaseAdapter {
 
         return itemView;
     }
+
 }

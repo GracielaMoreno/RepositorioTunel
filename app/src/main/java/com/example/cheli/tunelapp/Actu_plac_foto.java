@@ -64,6 +64,7 @@ public class Actu_plac_foto extends AppCompatActivity {
     String envia="";
     private String codigoUsuario = "";
     private String codigovehiculos = "";
+    private String TramaRecida;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +117,7 @@ public class Actu_plac_foto extends AppCompatActivity {
                             usarCamara();
                         } else if (options[which] == "Elegir de Galeria") {
                             abrirGaleria();
-                        } else if (options[which] == "Canelar") {
+                        } else if (options[which] == "Cancelar") {
                             dialog.dismiss();
                         }
 
@@ -132,14 +133,17 @@ public class Actu_plac_foto extends AppCompatActivity {
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 bmp.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
                 enviarImagen(bytes.toByteArray());
-
-
                 ByteArrayOutputStream bytes2 = new ByteArrayOutputStream();
                 bm.compress(Bitmap.CompressFormat.JPEG, 90, bytes2);
                 enviarImagen(bytes2.toByteArray());
                 codigoUsuario=getIntent().getStringExtra("cl_codigo");
                 codigovehiculos=getIntent().getStringExtra("cut_codigo");
-                //envia= "1," + codigoUsuario + "," + codigovehiculos;
+                envia= "1," + codigoUsuario + "," + codigovehiculos;
+                //ob.conectar();
+                //ob.enviar(envia);
+                //ob.cerrar();
+                //Log.e("envia",envia);
+                //TramaRecida = ob.cadena.toString();
 
                 Toast.makeText(getApplicationContext(), "Sus documentos han sido enviados!", Toast.LENGTH_LONG).show();
             }

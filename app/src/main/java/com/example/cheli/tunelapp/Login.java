@@ -6,23 +6,27 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.StrictMode;
-import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.method.MovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.zip.Inflater;
 
 public class Login extends AppCompatActivity {
 
@@ -33,7 +37,6 @@ public class Login extends AppCompatActivity {
     CheckBox chkRecoCred;
     TextView lblUsuario;
     TextView lblContrasenia;
-
     ImageButton btnAdmit;
     String envia="";
     String l="";
@@ -54,15 +57,17 @@ public class Login extends AppCompatActivity {
         indicacion1 = (TextView)findViewById(R.id.lblIndicacion1);
         indicacion2 = (TextView)findViewById(R.id.lblIndicacion2);
 
+
         String content = "Si ya es cliente del Telepeaje, utilice la clave del sistema Web para ingresar a esta app. Si olvidó la clave, ";
         indicacion1.setText(content);
         SpannableString link = makeLinkSpan("solicítela aquí", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //---------------------------------Intent i = new Intent(Login.this, Soli_clav.class );
-                Intent i = new Intent(Login.this, Portada.class );
-                startActivity(i);
-                finish();
+                PopUpBusqueda();
+                //Intent i = new Intent(Login.this, Soli_clav.class );
+               // Intent i = new Intent(Login.this, Portada.class );
+                //startActivity(i);
+               // finish();
             }
         });
         indicacion1.append(link);
@@ -176,7 +181,7 @@ public class Login extends AppCompatActivity {
             String[] vectorTramaRecibida = TramaRecida.split("\\|");
             CodigoResp=vectorTramaRecibida[0];
 
-
+            Log.e("","fallo en la carga"+CodigoResp);
 
             //usuario con una sola urbanizaion con esas credenciales
             if (CodigoResp.equals("1")){
@@ -186,24 +191,16 @@ public class Login extends AppCompatActivity {
                 CodigoUsuario=vectorTramaRecibida[3];
                 vehiculos = vectorTramaRecibida[4];
                 Toast.makeText(this, Mensaje + " " + Usuario, Toast.LENGTH_LONG).show();
-
+                ver_list_tags(CodigoUsuario, Usuario, vehiculos);
             //usuario con una sola urbanizaion con esas credenciales
-            if (CodigoResp.equals("1")){
-                //usuario selecciona guardar credenciales
-                //if (chkRecoCred.isChecked()){
-                //  guardar(view);
-                //}
-                limpiar(view);
-                //verificar(CodigoUsuario, Usuario);
-                ver_list_tags(CodigoUsuario, Usuario, vehiculos);}
-                else{
-                    Toast.makeText(this,"Intente nuevamente problemas de comunicación", Toast.LENGTH_LONG).show();
-
                 }
+            }else{
+                Toast.makeText(this,"Intente nuevamente problemas de comunicación", Toast.LENGTH_LONG).show();
             }
             if (CodigoResp.equals("2")){
                 if (vectorTramaRecibida.length==2){
                 Valor=vectorTramaRecibida[1];
+
                     PopUp();
                 }else{
                     Toast.makeText(this,"Intente nuevamente problemas de comunicación", Toast.LENGTH_LONG).show();
@@ -212,10 +209,11 @@ public class Login extends AppCompatActivity {
 
 
             }
-        }
+
     }
 
 
+    }
 
     public void ver_list_tags(String codigoUsuario, String nombreUsuario, String vehiculos)
     {
@@ -229,6 +227,7 @@ public class Login extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
 
     public void PopUp(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -244,5 +243,57 @@ public class Login extends AppCompatActivity {
                         });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    public void PopUpBusqueda(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Solicitud de clave");
+        builder.setMessage("Ingrese la cédula o RUC");
+        final EditText input = new EditText(this);
+        input.setWidth(500);
+        input.setHint("Cédula o RUC");
+
+        //input.setHeight(50);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+
+        input.setLayoutParams(lp);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("Enviar Solicitud", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                if ( input.getText().toString().equals("")) {
+                    PopUpBusqueda();
+                    Toast.makeText(getApplicationContext(), "Todos los campos son obligatorios, por favor ingrese sus datos", Toast.LENGTH_LONG).show();
+
+                }else {
+//                        String enviar=cedula.getText().toString();
+                    envia = "1,"+input.getText().toString();
+                    //ob.conectar();
+                    //ob.enviar(envia);
+                    //ob.cerrar();
+                    //TramaRecida = ob.cadena.toString();
+                    Toast.makeText(getApplicationContext(), "Su solicitud fue enviada por favor,revise su correo", Toast.LENGTH_LONG).show();
+
+                    Log.e("",envia);
+                    Intent i = new Intent(Login.this, Login.class);
+                    startActivity(i);
+                    finish();
+                }
+
+            }
+        });
+        builder.setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 }
