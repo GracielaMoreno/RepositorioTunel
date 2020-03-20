@@ -45,9 +45,11 @@
             <!-- ressource file to create -->
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name=".Actu_traj" />
+        <activity android:name=".Rec_Tag"></activity>
     </application>
 
 </manifest>

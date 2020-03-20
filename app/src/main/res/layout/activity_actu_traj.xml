@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="16dp"
+    android:background="@color/fondo"
+    tools:context=".Actu_traj">
+    <ScrollView
+        android:id="@+id/sv_principal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/img_regresar"
+                    android:layout_width="30dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/app_regresar"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"/>
+                <ImageView
+                    android:id="@+id/img_cabecera"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/app_cabe_logo_tele"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp">
+
+
+                <TextView
+                    android:id="@+id/lbltitulo"
+                    android:layout_width="291dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Autorización Débito Automático"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+                <TabHost
+                    android:id="@+id/th"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TabWidget
+                            android:id="@android:id/tabs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:id="@android:id/tabcontent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:id="@+id/tab1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/lblNota1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="20dp"
+                                    android:text="Yo" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/lblNota11"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="25dp"
+                                        android:text="Tarjeta:" />
+                                    <Spinner
+                                        android:id="@+id/spn_tipo_tarj"
+                                        android:layout_width="300dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@+id/lblNota11"
+                                        android:layout_alignBottom="@+id/lblNota11"
+                                        android:layout_marginTop="25dp"/>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/lblNota2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="25dp"
+                                        android:text="Del Banco:" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_banc_tarj"
+                                        android:layout_width="300dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@+id/lblNota2"
+                                        android:layout_alignBottom="@+id/lblNota2" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/lblNota3"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="25dp"
+                                        android:text="No." />
+                                    <EditText
+                                        android:id="@+id/txtCuenta"
+                                        android:layout_width="300dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@+id/lblNota3"
+                                        android:inputType="number"
+                                        android:layout_alignBottom="@+id/lblNota3" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/lblFechCadu"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="25dp"
+                                        android:text="Caducidad:" />
+
+                                    <TextView
+                                        android:id="@+id/lblMes"
+                                        android:layout_width="40dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_toRightOf="@+id/lblFechCadu"
+                                        android:text="Mes:"
+                                        android:layout_alignBottom="@+id/lblFechCadu" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_mes"
+                                        android:layout_width="80dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_toRightOf="@+id/lblMes"
+                                        android:layout_alignBottom="@+id/lblFechCadu" />
+
+                                    <TextView
+                                        android:id="@+id/lblAnio"
+                                        android:layout_width="30dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@+id/spn_mes"
+                                        android:text="Año:"
+                                        android:layout_alignBottom="@+id/lblFechCadu" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_anio"
+                                        android:layout_width="100dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_toRightOf="@+id/lblAnio"
+                                        android:layout_alignBottom="@+id/lblFechCadu" />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/tab2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/lblNota4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="25dp"
+                                    android:text="Yo" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/lblnota_banc_1"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="20dp"
+                                        android:text="Tipo de Cuenta:" />
+                                    <Spinner
+                                        android:id="@+id/spn_tipo_cuen"
+                                        android:layout_width="300dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignBottom ="@+id/lblnota_banc_1"
+                                        android:layout_toRightOf="@+id/lblnota_banc_1"
+                                        android:layout_marginTop="20dp"/>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/lblnota_banc_2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="20dp"
+                                        android:text="Del Banco:" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_banco"
+                                        android:layout_width="300dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@+id/lblnota_banc_2"
+                                        android:layout_alignBottom ="@+id/lblnota_banc_2"
+                                        android:layout_marginTop="20dp"/>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/lblNota6"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="20dp"
+                                        android:text="No." />
+                                    <EditText
+                                        android:id="@+id/txtCuenBanc"
+                                        android:layout_width="300dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_toRightOf="@+id/lblNota6"
+                                        android:layout_alignBottom="@+id/lblNota6"
+                                        android:inputType="number" />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+                    </LinearLayout>
+                </TabHost>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/lblNota7"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Por el valor de:" />
+
+                    <Spinner
+                        android:id="@+id/spn_pasadas"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/lblNota7"
+                        android:layout_alignBottom="@+id/lblNota7" />
+
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/lblNota8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@+id/spn_pasadas"
+                    android:text="Este débito se realizará cada vez que su saldo sea menor a 20 pasadas y la factura electrónica generada llegará a su correo  xtapia@procelec.ec" />
+
+                <Button
+                    android:id="@+id/btnContinuar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="btn_continuar"
+                    android:text="Continuar"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

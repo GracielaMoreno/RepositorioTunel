@@ -34,13 +34,16 @@ public class List_tags extends Activity {
     private String[] vectorVehiculos;
     private String[] vectorVehiculo;
     private cls_list_tags_adap ListTagsAdapter;
+    private String Bancos;
+    private String Trajetas;
+    private String Pasadas;
     private String cut_codigo="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_tags);
-
+        Llenar();
         ImageView img = (ImageView) findViewById(R.id.img_regresar);
         img.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -129,24 +132,33 @@ listTags.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.opcion_1:
-                //editNote(info.id);
-                return true;
-            case R.id.opcion_2:
-                //
-
                 Bundle bundle = new Bundle();
                 bundle.putString("cl_codigo" ,codigoUsuario);
-
                 bundle.putString("cut_codigo" ,cut_codigo);
-
-                Intent i = new Intent(List_tags.this, Actu_plac.class );
+                Intent i = new Intent(List_tags.this, Rec_Tag.class );
                 i.putExtras(bundle);
                 startActivity(i);
                 return true;
+                //editNote(info.id);
+            case R.id.opcion_2:
+                //
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("cl_codigo" ,codigoUsuario);
+                bundle2.putString("cut_codigo" ,cut_codigo);
+                bundle2.putString("Pasadas" ,Pasadas);
+                Intent inten = new Intent(List_tags.this, Actu_plac.class );
+                inten.putExtras(bundle2);
+                startActivity(inten);
+                return true;
             case R.id.opcion_3:
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("cl_codigo" ,"1");
-                Intent i2 = new Intent(List_tags.this,Cls_por_implementar .class );
+                bundle1.putString("cl_codigo" ,codigoUsuario);
+                bundle1.putString("cut_codigo" ,cut_codigo);
+                bundle1.putString("nombre" ,nombreUsuario);
+                bundle1.putString("Bancos" ,Bancos);
+                bundle1.putString("Tarjetas" ,Trajetas);
+                bundle1.putString("Pasadas" ,Pasadas);
+                Intent i2 = new Intent(List_tags.this,Actu_traj.class );
                 i2.putExtras(bundle1);
                 startActivity(i2);
                 return true;
@@ -156,8 +168,19 @@ listTags.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
     }
 
 
+public void Llenar(){
+    String envia= "2";
+    //ob.conectar();
+    //ob.enviar(envia);
+    //ob.cerrar();
+    //TramaRecida = ob.cadena.toString();
+   String TramaRecida = "Pichincha-Produbanco-Pacifico-Guayaquil-Austro-Bolivariano-Internancional-General Rumiñahui|Visa-Mastercard-Diners-American Expres-Discover|100 Pasadas por $28,50-200 Pasadas por $57";
 
+    String[] vectorTramaRecibida = TramaRecida.split("\\|");
+    Bancos=vectorTramaRecibida[0];
+    Trajetas=vectorTramaRecibida[1];
+    Pasadas=vectorTramaRecibida[2];
 
-
+}
 
 }
