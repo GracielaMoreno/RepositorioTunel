@@ -4,52 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Temp_list">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:id="@+id/relativeLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="87dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/txtCampo2"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimaryDark"
+            android:layout_width="114dp"
+            android:layout_height="75dp"
+            android:background="@color/colorApp"
+            android:fontFamily="@font/gothambook"
+            android:gravity="center"
             android:text="Placa"
             android:textColor="@color/fondo"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:layout_centerVertical="true"/>
+            android:textSize="20dp" />
+
         <TextView
             android:id="@+id/txtVacio"
-            android:layout_width="5dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@+id/txtCampo2"/>
+            android:layout_width="9dp"
+            android:layout_height="85dp"
+            android:layout_toRightOf="@+id/txtCampo2" />
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation ="vertical"
-            android:layout_toRightOf="@+id/txtVacio">
+            android:layout_toRightOf="@+id/txtVacio"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
             <TextView
                 android:id="@+id/txtCampo3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/robotolight"
                 android:text="Tag"
-                android:layout_alignParentTop="true"/>
+                android:textColor="@color/texto"
+                android:textSize="12dp" />
+
             <TextView
                 android:id="@+id/txtCampo4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Modelo"
-                android:layout_below="@+id/txtCampo3"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txtCampo3"
+                android:fontFamily="@font/robotolight"
+                android:text="Modelo"
+                android:textColor="@color/texto"
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/txtCampo5"
@@ -58,19 +69,13 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/txtCampo4"
+                android:fontFamily="@font/robotolight"
                 android:text="Saldo"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold" />
+                android:textColor="@color/texto"
+                android:textSize="12dp" />
         </RelativeLayout>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/txtVacio1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/relativeLayout2"
-        android:layout_alignStart="@+id/relativeLayout2"
-        android:layout_below="@+id/relativeLayout2" />
 </RelativeLayout>
 
 

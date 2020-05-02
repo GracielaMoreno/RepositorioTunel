@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomDialog" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@color/texto</item>
+        <item name="android:titleTextStyle">@font/roboto_regular</item>
+        <item name="android:textColor">@color/fondo</item>
+        <item name="android:colorButtonNormal">@color/colorApp</item>
+    </style>
+</resources>

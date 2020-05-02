@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Recarga">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_below="@+id/mibarra"
+    android:layout_marginBottom="45dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RECARGA DE TAG"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"/>
+
+        <LinearLayout
+            android:id="@+id/tab1"
+            android:layout_width="fill_parent"
+            android:layout_height="276dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lblNota1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotolight"
+                android:text="La recarga se realizará a la placa PBI-6430"
+                android:textColor="@color/texto" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="228dp"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lblNota11"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="PASADAS A RECARGAR"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp"
+                    android:autoSizeTextType="uniform"/>
+
+                <Spinner
+                    android:id="@+id/spn_pasadas"
+                    android:layout_width="303dp"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:pointerIcon="context_menu"
+                    android:popupBackground="@color/fondo"
+                    android:theme="@style/Theme.AppCompat" />
+
+                <TextView
+                    android:id="@+id/textTerm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblIndicacion1"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/robotolight"
+                    android:text=""
+                    android:textColor="#666666" />
+
+                <CheckBox
+                    android:id="@+id/chk_acep_term"
+                    style="@style/CustonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textTerm"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:buttonTint="@color/texto"
+                    android:checked="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Aceptar los terminos y condiciones "
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/buttonPreg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/colorApp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:onClick="pagoReC"
+                    android:text="Pagar"
+                    android:textColor="@color/fondo" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tarjetas"
+            android:layout_width="327dp"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/img_place"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+
+                android:src="@drawable/logoplacetopay" />
+
+            <ImageView
+                android:id="@+id/img_tarj"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/logosec" />
+
+            <ImageView
+                android:id="@+id/img_tarjDiners"
+                android:layout_width="35dp"
+                android:layout_height="44dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/mastercard" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:background="@color/colorApp"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:onClick="btn_continuar"
+            android:text="Preguntas Frecuentes"
+            android:textColor="@color/fondo" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+    <include layout="@layout/footer"/>
+</RelativeLayout>

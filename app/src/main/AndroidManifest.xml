@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cheli.tunelapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -18,11 +20,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:debuggable="false"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/iconopeaje"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:usesCleartextTraffic="true"
+        android:windowSoftInputMode="adjustNothing"
+        tools:ignore="HardcodedDebugMode">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity android:name=".Portada">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,8 +46,7 @@
         <activity android:name=".Login" />
         <activity android:name=".Actu_plac" />
         <activity android:name=".Actu_plac_foto" />
-        <activity android:name=".List_tags" />
-        <activity android:name=".Cls_por_implementar" />
+        <activity android:name=".Menu" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -48,8 +60,27 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".Actu_traj" />
-        <activity android:name=".Rec_Tag"></activity>
-    </application>
+        <activity android:name=".Actu_debi_auto_camb" />
+        <activity android:name=".Recarga" />
+        <activity android:name=".Contrato" />
+        <activity android:name=".Baja_unid" />
+        <activity android:name=".Soli_tag" />
+        <activity android:name=".Soli_tag_matr" />
+        <activity android:name=".Pago" />
+        <activity android:name=".Temp_list_pago" />
+        <activity android:name=".Preg_frec" />
+        <activity android:name=".Web_View_Pago" />
+        <activity android:name=".Hist_pago" />
+        <activity android:name=".Temp_list_hist_pago" />
+        <activity android:name=".Hist_soli_pend" />
+        <activity android:name=".Temp_list_hist_soli_pend" />
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Term_Cond" />
+        <activity android:name=".Paso_Soli_Tag_No_Cli" />
+        <activity android:name=".Paso_Soli_Tag_Cli"></activity>
+    </application>
 </manifest>

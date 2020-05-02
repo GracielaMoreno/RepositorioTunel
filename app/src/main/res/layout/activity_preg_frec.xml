@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Preg_frec">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/mibarra"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="5dp"
+        android:paddingRight="16dp"
+        android:id="@+id/body"
+        >
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PREGUNTAS FRECUENTES"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            />
+      </LinearLayout>
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_below="@id/body"
+    android:layout_marginBottom="45dp">
+
+            <LinearLayout
+                android:id="@+id/tab1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                >
+
+                <TextView
+                    android:id="@+id/lblNota1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="1. ¿Qué es PlacetoPay?"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/lblNota2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="PlacetoPay es la plataforma de pagos electrónicos que usa el Peaje del Túnel Guayasamin-EPMMOP para procesar en línea las transacciones generadas en la tienda virtual con las formas de pago habilitadas para tal fin. " />
+
+                <TextView
+                    android:id="@+id/lblNota3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="2. ¿Cómo puedo pagar? "
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/lblNota4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="En la tienda virtual del Peaje del Túnel Guayasamin-EPMMOP usted podrá realizar su pago con los medios habilitados para tal fin. Usted, de acuerdo a las opciones de pago escogidas por el comercio, podrá pagar a través Diners, Discover, Visa y MasterCard ; de todos los bancos con pago corriente y en los diferido, únicamente las tarjetas emitidas por Banco Pichincha, Diners, Loja, BGR y Manabí." />
+
+                <TextView
+                    android:id="@+id/lblNota5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:layout_marginTop="20dp"
+                    android:text="3. ¿Es seguro ingresar mis datos bancarios en este sitio web? "
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lblNota6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Para proteger tus datos el Peaje del Túnel Guayasamin-EPMMOP delega en PlacetoPay la captura de la información sensible. Nuestra plataforma de pagos cumple con los más altos estándares exigidos por la norma internacional PCI DSS de seguridad en transacciones con tarjeta de crédito. Además tiene certificado de seguridad SSL expedido por GeoTrust una compañía Verisign, el cual garantiza comunicaciones seguras mediante la encriptación de todos los datos hacia y desde el sitio; de esta manera, te podrás sentir seguro a la hora de ingresar la información de su tarjeta.
+
+Durante el proceso de pago, en el navegador se muestra el nombre de la organización autenticada, la autoridad que lo certifica y la barra de dirección cambia a color verde. Estas características son visibles de inmediato y dan garantía y confianza para completar la transacción en PlacetoPay.
+
+PlacetoPay también cuenta con el monitoreo constante de McAfee Secure y la firma de mensajes electrónicos con Certicámara.
+
+PlacetoPay es una marca de la empresa colombiana EGM Ingeniería Sin Fronteras S.A.S.
+
+" />
+                <TextView
+                    android:id="@+id/lblNota7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:text="4. ¿Puedo realizar el pago cualquier día y a cualquier hora? " />
+                <TextView
+                    android:id="@+id/lblNota8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Sí, en el Peaje del Túnel Guayasamin-EPMMOP podrás realizar tus compras en línea los 7 días de la semana, las 24 horas del día a sólo un clic de distancia." />
+                <TextView
+                    android:id="@+id/lblNota9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:text="5. ¿Puedo cambiar la forma de pago?" />
+                <TextView
+                    android:id="@+id/lblNota10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Si aún no has finalizado tu pago, podrás volver al paso inicial y elegir la forma de pago que prefieras. Una vez finalizada la compra no es posible cambiar la forma de pago." />
+                <TextView
+                    android:id="@+id/lblNota11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:text="6. ¿Pagar electrónicamente tiene algún valor para mí como comprador? " />
+                <TextView
+                    android:id="@+id/lblNota12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="No, los pagos electrónicos realizados a través de PlacetoPay no generan costos adicionales para el comprador." />
+                <TextView
+                    android:id="@+id/lblNota13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:text="7. ¿Qué debo hacer si mi transacción no concluyó?" />
+                <TextView
+                    android:id="@+id/lblNota14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="En primera instancia deberás revisar si llegó un mail de confirmación del pago en tu cuenta de correo electrónico (la inscrita en el momento de realizar el pago), en caso de no haberlo recibido, deberás contactar a telepeaje-tunel-guayasamin@procelec.ec  para confirmar el estado de la transacción.
+
+En caso que tu transacción haya declinado, debes verificar si la información de la cuenta es válida, está habilitada para compras no presenciales y si tienes cupo o saldo disponible. Si después de esto continua con la declinación debes comunicarte con el Peaje del Túnel Guayasamin-EPMMOP. En última instancia, puedes remitir tu solicitud a servicioposventa@placetopay.ec.
+" />
+                <TextView
+                    android:id="@+id/lblNota15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:text="8. ¿Qué debo hacer si no recibí el comprobante de pago?" />
+                <TextView
+                    android:id="@+id/lblNota16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Por cada transacción aprobada a través de PlacetoPay, recibirás un comprobante del pago con la referencia de compra en la dirección de correo electrónico que indicaste al momento de pagar.  Si no lo recibes, podrás contactar a la los lineas 022480374, 022460000 o 022928155 o al correo electrónico telepeaje-tunel-guayasamin@procelec.ec , para solicitar el reenvío del comprobante a la misma dirección de correo electrónico registrada al momento de pagar. En última instancia, puedes remitir tu solicitud a servicioposventa@placetopay.ec." />
+                <TextView
+                    android:id="@+id/lblNota17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/texto"
+                    android:text="9. No me llegó el producto que compré ¿qué hago?" />
+                <TextView
+                    android:id="@+id/lblNota18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Debes verificar si la transacción fue exitosa en tu extracto bancario. En caso de ser así, debes revisar nuestras políticas de envío en el sitio web telepeaje-tunel-guayasamin@procelec.ec para identificar los tiempos de entrega.
+" />
+
+            </LinearLayout>
+
+     </ScrollView>
+    <include
+        layout="@layout/footer"
+        />
+</RelativeLayout>

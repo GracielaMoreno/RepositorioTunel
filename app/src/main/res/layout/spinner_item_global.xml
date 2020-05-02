@@ -4,5 +4,7 @@
     android:layout_height="wrap_content"
     android:textColor="@color/colorPrimary"
     android:padding="5dp"
-    android:textSize="14dp"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    android:textSize="15dp"
+    android:autoSizeTextType="uniform"
+    android:background="@drawable/bordespinner"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>

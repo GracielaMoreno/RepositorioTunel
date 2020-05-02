@@ -2,138 +2,195 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="16dp"
     android:background="@color/fondo"
     tools:context=".Login">
-
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mibarra"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="70dp"
+        android:background="@color/colorApp"
+        >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/img_cabecera"
                 android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:src="@drawable/app_cabe_logo_epmmop"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/logoemmop"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"/>
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/lbltitulo"
-                android:layout_width="291dp"
-                android:layout_height="26dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"
-                android:inputType="textPersonName"
-                android:text="Bienvenido"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+    </android.support.v7.widget.Toolbar>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/title"
+    android:layout_below="@+id/mibarra"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp">
+    <TextView
+        android:id="@+id/lbltitulo"
+        android:layout_width="291dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:enabled="false"
+        android:text="BIENVENIDO"
+        android:textColor="#0f5598"
+        android:textSize="30dp"
+        app:fontFamily="@font/gotham_black" />
+</LinearLayout>
 
-            <TextView
-                android:id="@+id/lbllogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="50dp"
-                android:text="Cédula o RUC" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/title"
+        android:layout_marginBottom="45dp"
+        android:layout_alignBottom="@+id/footer">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            >
 
-
-            <EditText
-                android:id="@+id/txtLogin"
-                android:layout_width="321dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="70dp"
-                android:ems="10"
-                android:hint=""
-                android:inputType="number"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/lblcontraseña"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="120dp"
-                android:text="Contraseña" />
-
-
-            <EditText
-                android:id="@+id/txtPass"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="140dp"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint=""
-                android:text="" />
-
-            <CheckBox
-                android:id="@+id/chk_reco_cred"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="190dp"
-                android:text="Recordar Credenciales" />
-
-
-            <Button
-                android:id="@+id/btnIngresar"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="240dp"
-                android:background="@color/colorPrimary"
-                android:onClick="ingresar"
-                android:text="Ingresar"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
-
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/lblIndicacion1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:text=""/>
-
-            <TextView
-                android:id="@+id/lblIndicacion2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lblIndicacion1"
                 android:layout_marginTop="20dp"
-                android:text=""/>
+                >
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/lbllogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Cédula o RUC"
+                    android:textColor="#666666"
+                    android:textSize="18dp"
+                    app:fontFamily="@font/roboto_regular" />
 
-    </LinearLayout>
 
+                <EditText
+                    android:id="@+id/txtLogin"
+                    android:layout_width="321dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:ems="10"
+                    android:hint=""
+                    android:inputType="text"
+                    android:maxLength="13"
+                    android:text=""
+                    android:textColor="#666666"
+                    android:textCursorDrawable="@color/colorAccent"
+                    app:fontFamily="@font/roboto_regular" />
+
+                <TextView
+                    android:id="@+id/lblcontraseña"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="100dp"
+                    android:text="Contraseña"
+                    android:textColor="#666666"
+                    android:textSize="18dp"
+                    app:fontFamily="@font/roboto_regular" />
+
+
+                <EditText
+                    android:id="@+id/txtPass"
+                    android:layout_width="321dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="130dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:ems="10"
+                    android:hint=""
+                    android:inputType="textPassword"
+                    android:text=""
+                    android:textColor="#666666"
+                    android:textCursorDrawable="@color/colorAccent"
+                    app:fontFamily="@font/roboto_regular" />
+
+                <CheckBox
+                    android:id="@+id/chk_reco_cred"
+                    style="@style/CustonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="180dp"
+                    android:buttonTint="@color/texto"
+                    android:checked="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Recordar Credenciales"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+
+                <Button
+                    android:id="@+id/btn_enviar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="260dp"
+                    android:background="@color/colorApp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/fondo"
+                    android:onClick="btn_enviar"
+                    android:text="Ingresar"
+                    />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/lblIndicacion1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="#666666"
+                    android:text=""/>
+
+                <TextView
+                    android:id="@+id/lblIndicacion2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblIndicacion1"
+                    android:layout_marginTop="20dp"
+                    android:textColor="#666666"
+                    android:fontFamily="@font/robotolight"
+                    android:text=""/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <include layout="@layout/footer" />
 </RelativeLayout>

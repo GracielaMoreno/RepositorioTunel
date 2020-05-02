@@ -2,27 +2,66 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Actu_plac_foto">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Actu_plac_foto"
+    android:background="@color/fondo"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/mibarra"
+        android:id="@+id/scrol"
+        android:layout_marginBottom="45dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
     <Button
         android:id="@+id/btnMatricula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5dp"
-        android:background="@color/colorPrimary"
         android:text="Fotografiar Matrícula del Vehículo"
         android:layout_marginTop="15dp"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:background="@color/colorApp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/fondo"/>
 
     <ImageView
         android:id="@+id/img_matricula"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/actu_plac_foto_matr"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btnMatricula"
         />
@@ -34,17 +73,16 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5dp"
         android:layout_below="@+id/img_matricula"
-        android:background="@color/colorPrimary"
         android:layout_marginTop="10dp"
         android:text="Fotografiar Cédula del Cliente"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:background="@color/colorApp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/fondo"/>
 
     <ImageView
         android:id="@+id/img_cedula"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/actu_plac_foto_cedu"
         android:layout_below="@+id/btnCedula"
         android:layout_centerHorizontal="true"/>
 
@@ -56,10 +94,11 @@
         android:layout_marginLeft="5dp"
         android:layout_below="@+id/img_cedula"
         android:layout_marginTop="15dp"
-        android:background="@color/colorPrimary"
-
-        android:text = "Enviar Información"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
-
+        android:text = "Continuar"
+        android:background="@color/colorApp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/fondo"/>
+</RelativeLayout>
+    </ScrollView>
+    <include layout="@layout/footer" />
 </RelativeLayout>

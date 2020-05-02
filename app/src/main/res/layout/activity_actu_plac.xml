@@ -5,170 +5,262 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="16dp"
-    android:background="@color/fondo"
-    tools:context=".Actu_plac">
 
-    <ScrollView
+android:background="@color/fondo"
+    tools:context=".Actu_plac">
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/mibarra"
+        android:layout_marginBottom="45dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/img_regresar"
-                    android:layout_width="30dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/app_regresar"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="10dp"/>
-                <ImageView
-                    android:id="@+id/img_cabecera"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/app_cabe_logo_tele"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"/>
-            </RelativeLayout>
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
                 android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:padding="16dp"
+                android:layout_marginBottom="45dp">
 
                 <TextView
-                    android:id="@+id/lbltitulo"
-                    android:layout_width="291dp"
-                    android:layout_height="26dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="5dp"
-                    android:text="Actualización de vehículo"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gothambook"
+                    android:text="ACTUALIZACIÓN DE VEHICULO"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:autoSizeTextType="uniform"/>
 
                 <TextView
                     android:id="@+id/lblNota"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="5dp"
                     android:layout_below="@+id/lbltitulo"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/robotolight"
                     android:text="Estimado cliente:"
-                    />
+                    android:textColor="@color/texto" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="18dp"
+                        app:srcCompat="@drawable/logi_llave" />
+
+                    <TextView
+                        android:id="@+id/lblNota0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_below="@+id/lbltitulo"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/robotolight"
+                        android:text="Este proceso le permite cambiar los datos del vehículo al cual se encuentra atado el dispositivo TAG."
+                        android:textColor="@color/texto" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="18dp"
+                        app:srcCompat="@drawable/logi_llave" />
+
+                    <TextView
+                        android:id="@+id/lblNota1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lblNota0"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/robotolight"
+                        android:text="Recuerde, el TAG es personal y debe ser utilizado solo en el vehículo enrolado."
+                        android:textColor="@color/texto" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="18dp"
+                        app:srcCompat="@drawable/logi_llave" />
+
+                    <TextView
+                        android:id="@+id/lblNota2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lblNota1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/robotolight"
+                        android:text="Para realizar este proceso tenga a mano la matrícula del vehículo y la cédula del cliente."
+                        android:textColor="@color/texto" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/lblNota0"
+                    android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_below="@+id/lbltitulo"
-                    android:text="- Este proceso le permite cambiar los datos del vehículo al cual se encuentra atado el dispositivo TAG."
-                    />
+                    android:fontFamily="@font/gothambook"
+                    android:text="PASOS A SEGUIR"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:autoSizeTextType="uniform"/>
 
-                <TextView
-                    android:id="@+id/lblNota1"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="18dp"
+                        app:srcCompat="@drawable/logi_llave" />
+
+                    <TextView
+                        android:id="@+id/lblNota5"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/lblNota3"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/robotolight"
+                        android:text="Paso 1: Fotografiar la matrícula del vehículo y la cédula del
+cliente"
+                        android:textColor="@color/texto" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="11dp"
+                        app:srcCompat="@drawable/logi_llave" />
+
+                    <TextView
+                        android:id="@+id/lblNota6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lblNot5"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/robotolight"
+                        android:text="Paso 2: Presione el botón Enviar Información."
+                        android:textColor="@color/texto" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/lblNota0"
-                    android:text="- Recuerde, el TAG es personal y debe ser utilizado solo en el vehículo enrolado."
-                    />
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/lblNota2"
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="12dp"
+                        app:srcCompat="@drawable/logi_llave" />
+
+                    <TextView
+                        android:id="@+id/lblNota7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lblNota6"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/robotolight"
+                        android:text="Paso 3: Una vez realizado este proceso, debe esperar 48 horas, cuando la información enviada haya sido validada recibirá un correo confirmando el cambio de vehículo."
+                        android:textColor="@color/texto" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/lblNota1"
-                    android:text="- Para realizar este proceso tenga a mano la matrícula del vehículo y la cédula del cliente."
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btnContinuar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtPlaca"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/colorApp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:onClick="btn_continuar"
+                        android:text="Fotografiar Documentos"
+                        android:textColor="@color/fondo" />
                     />
-
-                <TextView
-                    android:id="@+id/lbltitulo1"
-                    android:layout_width="291dp"
-                    android:layout_height="26dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Pasos a seguir"
-                    android:layout_below="@+id/lblNota2"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-
-
-                <TextView
-                    android:id="@+id/lblNota5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@+id/lblNota3"
-                    android:text="Paso 1: Fotografíe la matrícula del vehículo y la cédula del cliente."
-                    />
-
-                <TextView
-                    android:id="@+id/lblNota6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@+id/lblNot5"
-                    android:text="Paso 2: Presione el botón Enviar Información."
-                    />
-
-                <TextView
-                    android:id="@+id/lblNota7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@+id/lblNota6"
-                    android:text="Paso 3: Una vez realizado este proceso, debe esperar 24 horas, cuando la información enviada haya sido validada recibirá un correo confirmando el cambio de vehículo."
-                    />
-
-                <Button
-                    android:id="@+id/btnContinuar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_below="@+id/txtPlaca"
-                    android:layout_marginTop="40dp"
-                    android:background="@color/colorPrimary"
-                    android:onClick="btn_continuar"
-                    android:text="Fotografiar Documentos"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold" />
-                />
+                </LinearLayout>
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/lblMensaje"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:layout_marginTop="20dp" />
-            </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
 
-
+    <include layout="@layout/footer"/>
 
 </RelativeLayout>
 

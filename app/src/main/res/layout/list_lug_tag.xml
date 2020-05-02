@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="16dp"
+   >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/lblNota13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp"
+            android:text="Lugares disponibles:"
+            />
+
+        <Spinner
+            android:id="@+id/spn_tipo_lugares"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@+id/lblNota13"
+            android:background="@drawable/bordespinner" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+        <EditText
+            android:id="@+id/editTextDireccion"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+           android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Direccíón Domicilio"
+            android:inputType=""
+            android:backgroundTint="@color/colorAccent"
+             />
+
+
+    <EditText
+            android:id="@+id/editTextCodPostal"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="Codigo Postal"
+            android:inputType=""
+            android:backgroundTint="@color/colorAccent"
+    />
+    <EditText
+        android:id="@+id/editTextCodReferencia"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="Referencia domiciliaria"
+        android:inputType=""
+        android:backgroundTint="@color/colorAccent"
+        />
+    <Button
+        android:id="@+id/btnContinuarLug"
+        android:layout_width="327dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:background="@color/colorApp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="center"
+        android:text="Continuar"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/fondo"
+        android:layout_marginBottom="5dp"/>
+</LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

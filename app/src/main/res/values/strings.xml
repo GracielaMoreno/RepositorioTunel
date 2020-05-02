@@ -4,5 +4,51 @@
     <string name="g_opcion_1">Recarga de Tag</string>
     <string name="g_opcion_2">Cambio de vehículo </string>
     <string name="g_opcion_3">Autorización de débito automático</string>
+    <string name="g_opcion_4">Baja de la unidad</string>
+    <string name="g_opcion_5">Recargar lista de tags</string>
+    <string name="cm_login_menu_ingreso">2-0</string>
+    <string name="cm_login_menu_list_pagos">2-1</string>
+    <string name="cm_login_menu_pag_pend_place">2-2</string>
 
+    <string name="cm_hist_pagos">3-0</string>
+    <string name="cm_report_ini_pago">3-1</string>
+    <string name="cm_report_sesion">3-2</string>
+
+    <string name="cm_menu_actu_debi_auto">4-0</string>
+    <string name="cm_menu_tag_lugares">4-1</string>
+    <string name="cm_list_pasadas_rec">4-2</string>
+    <string name="cm_menu_soli_tag_matri_verificar">4-3</string>
+    <string name="cm_buscar_rec_pend">4-4</string>
+    <string name="cm_menu_hist_pagos">4-5</string>
+    <string name="cm_menu_list_soli_pend">4-6</string>
+    <string name="cm_menu_actualizar_tags">4-7</string>
+
+    <string name="cm_report_ini_rec">5-1</string>
+    <string name="cm_report_ini_ses_rec">5-2</string>
+
+    <string name="cm_soli_cont">6-0</string>
+
+    <string name="cm_contrato_camb_vehi">9-0</string>
+    <string name="cm_contrato_comp_tag_cl_antiguo">9-1</string>
+    <string name="cm_contrato_comp_tag_cl_nuevo">9-2</string>
+
+    <string name="cm_auto_debi_auto">10-0</string>
+
+
+
+    <string name="cm_envio_pin_correo">12-0</string>
+    <string name="cm_verificar_pin_correo">12-1</string>
+
+    <string name="cm_soli_tag">14-0</string>
+    <string name="cm_list_lug_tag">14-1</string>
+
+    <string name="cm_soli_tag_matr">15-0</string>
+
+    <string name="g_error_internet">Lo lamentamos, para usar este aplicativo debes tener acceso a internet. </string>
+    <string name="g_error_servidor">Lo lamentamos, no podemos conectarnos con el Servidor, espera un momento y intentalo nuevamente. </string>
+    <string name="g_error_global">Lo lamentamos, no podemos continuar </string>
+
+    <string name="cm_auto_debi_auto_camb_cuenta">11-0</string>
+    <string name="cm_auto_debi_auto_camb_credito">11-1</string>
+    <string name="cm_actu_estado">13-0</string>
 </resources>

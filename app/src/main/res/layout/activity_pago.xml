@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+android:background="@color/fondo"
+    tools:context=".Pago">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mibarra"
+        android:layout_marginBottom="45dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/mibarra"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/gothambook"
+                    android:text="INFORMACIÓN DE PAGOS"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="202dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="30dp"
+                            android:text="Valor sin IVA: $"
+                            android:textColor="@color/texto"
+                            android:textSize="18dp"
+                            app:fontFamily="@font/roboto_regular" />
+
+                        <TextView
+                            android:id="@+id/sinIVA"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:fontFamily="@font/robotolight"
+                            android:text="80"
+                            android:textColor="@color/texto"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="30dp"
+                            android:text="Valor con IVA: $"
+                            android:textColor="@color/texto"
+                            android:textSize="18dp"
+                            app:fontFamily="@font/roboto_regular" />
+
+                        <TextView
+                            android:id="@+id/conIVA"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:fontFamily="@font/robotolight"
+                            android:text="15"
+                            android:textColor="@color/texto"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="30dp"
+                            android:text="Importe IVA: $"
+                            android:textColor="@color/texto"
+                            android:textSize="18dp"
+                            app:fontFamily="@font/roboto_regular" />
+
+                        <TextView
+                            android:id="@+id/importeIVA"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:fontFamily="@font/robotolight"
+                            android:text="1.8"
+                            android:textColor="@color/texto"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="130dp"
+                            android:layout_height="30dp"
+                            android:text="Porcentaje IVA:"
+
+                            android:textColor="@color/texto"
+                            android:textSize="18dp"
+                            app:fontFamily="@font/roboto_regular" />
+
+                        <TextView
+                            android:id="@+id/porcenIVA"
+                            android:layout_width="90dp"
+                            android:layout_height="30dp"
+                            android:fontFamily="@font/robotolight"
+                            android:text="12%"
+                            android:textColor="@color/texto"
+                            android:textSize="18dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="190dp"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:text="valor a pagar:"
+                            android:textColor="@color/texto"
+                            android:textSize="24dp"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/roboto_regular" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="139dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorApp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:onClick="btn_continuar"
+                        android:text="Preguntas Frecuentes"
+                        android:textColor="@color/fondo" />
+
+                    <Button
+                        android:layout_width="139dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorApp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:onClick="list_Hist_Pagos"
+                        android:text="Historial de Pagos"
+                        android:textColor="@color/fondo" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/signo"
+                            android:layout_width="34dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center"
+                            android:text="$"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="24dp" />
+
+                        <TextView
+                            android:id="@+id/totalPago"
+                            android:layout_width="83dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center"
+                            android:text="120"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="24dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:id="@+id/textTerm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/robotolight"
+                    android:text=""
+                    android:textColor="#666666" />
+
+                <CheckBox
+                    android:id="@+id/chk_acep_term"
+                    style="@style/CustonTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textTerm"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:buttonTint="@color/texto"
+                    android:checked="true"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Aceptar terminos y condiciones "
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorApp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:onClick="pago"
+                    android:text="Pagar"
+                    android:textColor="@color/fondo" />
+
+                <LinearLayout
+                    android:layout_width="327dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/img_place"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/logoplacetopay" />
+
+                    <ImageView
+                        android:id="@+id/img_tarj"
+                        android:layout_width="217dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/logosec" />
+
+                    <ImageView
+                        android:id="@+id/img_tarjDiners"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/mastercard" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:id="@+id/lbltitulo"
+                    android:layout_width="213dp"
+                    android:layout_height="26dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/robotobold"
+                    android:text="Valores Pendientes"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/texto"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/lsvw_pagos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/lblnota"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp" />
+
+        </LinearLayout>
+    </ScrollView>
+    <include
+        layout="@layout/footer"
+        />
+</RelativeLayout>

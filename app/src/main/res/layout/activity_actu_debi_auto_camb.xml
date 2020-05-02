@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".Actu_debi_auto_camb"
+    android:background="@color/fondo">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/gothambook"
+            android:text="AUTORIZACIÓN DE DEBITO AUTOMATICO"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:id="@+id/sv_principal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TabHost
+                    android:id="@+id/th"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/colorAccent"
+                    android:theme="@style/AppTheme">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TabWidget
+                            android:id="@android:id/tabs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/AppTheme" />
+
+                        <FrameLayout
+                            android:id="@android:id/tabcontent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center">
+
+                            <LinearLayout
+                                android:id="@+id/tab1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/colorAccent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/lblNota1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:fontFamily="@font/robotolight"
+                                    android:text="Yo"
+                                    android:textColor="@color/texto" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="58dp"
+                                    android:layout_marginTop="5dp">
+
+                                    <TextView
+                                        android:id="@+id/lblNota11"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Tarjeta:"
+                                        android:textColor="@color/texto" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_tipo_tarj"
+                                        android:layout_width="321dp"
+                                        android:layout_height="29dp"
+                                        android:layout_below="@+id/lblNota11"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginTop="5dp"
+                                        />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="58dp">
+
+                                    <TextView
+                                        android:id="@+id/lblNota2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Del Banco:"
+                                        android:textColor="@color/texto" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_banc_tarj"
+                                        android:layout_width="321dp"
+                                        android:layout_height="26dp"
+                                        android:layout_below="@+id/lblNota2"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginTop="5dp"
+                                        />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/lblNota3"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="No."
+                                        android:textColor="@color/texto" />
+
+                                    <EditText
+                                        android:id="@+id/txtCuenta"
+                                        android:layout_width="321dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/lblNota3"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginTop="5dp"
+                                        android:backgroundTint="@color/colorAccent"
+                                        android:inputType="number"
+                                        android:maxLength="20"
+                                        android:textCursorDrawable="@color/colorAccent" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="67dp">
+
+                                    <LinearLayout
+                                        android:layout_width="117dp"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/lblMes"
+                                            android:layout_width="40dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:fontFamily="@font/roboto_regular"
+                                            android:text="Mes:"
+
+                                            android:textColor="@color/texto" />
+
+                                        <Spinner
+                                            android:id="@+id/spn_mes"
+                                            android:layout_width="80dp"
+                                            android:layout_height="30dp"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_below="@+id/lblMes"
+                                            android:layout_marginTop="5dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="121dp"
+                                        android:layout_height="match_parent"
+
+                                        android:layout_alignParentTop="true"
+
+                                        android:layout_centerHorizontal="true"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/lblAnio"
+                                            android:layout_width="30dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentTop="true"
+
+                                            android:fontFamily="@font/roboto_regular"
+                                            android:text="Año:"
+                                            android:textColor="@color/texto" />
+
+                                        <Spinner
+                                            android:id="@+id/spn_anio"
+                                            android:layout_width="100dp"
+                                            android:layout_height="30dp"
+                                            android:layout_alignLeft="@+id/lblAnio"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_alignStart="@+id/lblAnio"
+                                            android:layout_below="@+id/lblAnio"
+                                            android:layout_marginTop="5dp" />
+
+                                    </LinearLayout>
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+                                    <TextView
+                                        android:id="@+id/lblNota13"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="10dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Por el valor de:"
+                                        android:textColor="@color/texto" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_pasadas"
+                                        android:layout_width="321dp"
+                                        android:layout_height="33dp"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_below="@+id/lblNota13"
+                                        android:layout_marginTop="5dp" />
+</LinearLayout>
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/lblNota8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_below="@+id/spn_pasadas"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/robotolight"
+                                    android:text=""
+                                    android:textColor="@color/texto" />
+
+                                <Button
+                                    android:id="@+id/btnContinuar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@color/colorApp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:onClick="btn_continuar"
+                                    android:text="Continuar"
+                                    android:textColor="@color/fondo" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/tab2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:backgroundTint="@color/colorAccent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/lblNota4"
+                                    android:layout_width="321dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="25dp"
+                                    android:fontFamily="@font/robotolight"
+                                    android:text="Yo"
+                                    android:textColor="@color/texto" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/lblnota_banc_1"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="30dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Tipo de Cuenta:"
+                                        android:textColor="@color/texto" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_tipo_cuen"
+                                        android:layout_width="321dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/lblnota_banc_1"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginTop="5dp" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/lblnota_banc_2"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Del Banco:"
+                                        android:textColor="@color/texto" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_banco"
+                                        android:layout_width="321dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/lblnota_banc_2"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginTop="5dp"
+                                         />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/lblNota6"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginTop="20dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="No."
+                                        android:textColor="@color/texto" />
+
+                                    <EditText
+                                        android:id="@+id/txtCuenBanc"
+                                        android:layout_width="321dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/lblNota6"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginTop="5dp"
+                                        android:backgroundTint="@color/colorAccent"
+                                        android:inputType="number"
+                                        android:maxLength="20"
+                                        android:textCursorDrawable="@color/colorAccent" />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="74dp">
+
+                                    <TextView
+                                        android:id="@+id/lblNota7"
+                                        android:layout_width="100dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="10dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Por el valor de:"
+                                        android:textColor="@color/texto" />
+
+                                    <Spinner
+                                        android:id="@+id/spn_pasadas2"
+                                        android:layout_width="321dp"
+                                        android:layout_height="33dp"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_below="@+id/lblNota7"
+                                        android:layout_marginTop="5dp" />
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/lblNota15"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_below="@+id/spn_pasadas"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/robotolight"
+                                    android:text=""
+                                    android:textColor="@color/texto" />
+
+                                <Button
+                                    android:id="@+id/btnContinuar2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginBottom="40dp"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@color/colorApp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:onClick="btn_continuar2"
+                                    android:text="Continuar"
+                                    android:textColor="@color/fondo" />
+                            </LinearLayout>
+
+                        </FrameLayout>
+                    </LinearLayout>
+                </TabHost>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <include layout="@layout/footer"
+       />
+</RelativeLayout>

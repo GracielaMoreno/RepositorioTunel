@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Paso_Soli_Tag_Cli">
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SOLICITUD DE TAG"
+        android:fontFamily="@font/gothambook"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_below="@+id/mibarra"
+        android:autoSizeTextType="uniform"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/textView10">
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/lblNota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_below="@+id/lbltitulo"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                android:text="Estimado cliente:" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="18dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@+id/lbltitulo"
+                    android:text="Este proceso le permite adquirir un dispositivo TAG para cada vehiculo que se registre."
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="18dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/lblNota0"
+                    android:text="Recuerde, el TAG es personal y debe ser utilizado solo en el vehículo enrolado."
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="18dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/lblNota1"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Para realizar este proceso tenga a mano la matrícula del vehículo y la cédula del cliente."
+                    /></LinearLayout>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="PASOS A SEGUIR"
+                android:fontFamily="@font/gothambook"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="12dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/lblNota6"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Paso 1: Fotografíar las matrículas de los vehículos para los cuales está adquiriendo los tags."
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="12dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/lblNota6"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Paso 2: Seleccionar el lugar de entrega del tag."
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="12dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/lblNota6"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Paso 3: Enviar la solicitud."
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="12dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/lblNota6"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Paso 4: Dentro de las próximas 48 horas recibirá un correo con las credenciales de acceso al
+sistema y las instrucciones de pago de los tags adquiridos."
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginTop="12dp"
+                    app:srcCompat="@drawable/logi_llave" />
+                <TextView
+                    android:id="@+id/lblNota115"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/lblNota6"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/texto"
+                    android:text="Paso 5: Realizar el pago y retiro de los dispositivos, este pago puede hacerlo a través del app o en
+los centros de atención."
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/lblNota117"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblNota6"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/robotolight"
+                    android:text="Notas:"
+                    android:textColor="@color/texto"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/lblNota118"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblNota6"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/robotolight"
+                    android:text="1.- A cada vehiculo ingresado en la solicitud se le asignará un tag."
+                    android:textColor="@color/texto"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/lblNota116"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lblNota6"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/robotolight"
+                    android:text="2.- El valor del tag es de $15 +Iva, el valor de la recarga inicial es de $15 correspondientes a 50
+pasadas, el valor total a pagar por cada tag es de $31.8."
+                    android:textColor="@color/texto"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lblNota119"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/robotolight"
+                    android:text="3.- Si el lugar de retiro del tag fue domicilio, el tag le será entregado en un plazo de 48 horas
+posterior al pago."
+                    android:textColor="@color/texto"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/btnContinuar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_below="@+id/txtPlaca"
+                    android:layout_marginTop="10dp"
+                    android:text="Continuar"
+                    android:background="@color/colorApp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/fondo"/>
+                />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/footer"/>
+
+</RelativeLayout>
+
+
+
+
+

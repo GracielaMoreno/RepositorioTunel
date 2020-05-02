@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Term_Cond">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/body2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/mibarra"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="5dp"
+        android:paddingRight="16dp"
+
+        >
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TERMINOS Y CONDICIONES"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/body2"
+        android:layout_marginBottom="45dp">
+
+        <LinearLayout
+            android:id="@+id/tab1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            >
+
+
+            <TextView
+                android:id="@+id/lblNota18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                android:text="Estimado cliente:" />
+            <TextView
+                android:id="@+id/lblNota2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                android:text="Es requisito necesario para la adquisición de los productos que se ofrecen en este aplicativo, que
+lea y acepte los siguientes Términos y Condiciones que a continuación se redactan. El uso de
+nuestros servicios, así como la compra de nuestros productos implicará que usted ha leído y
+aceptado los Términos y Condiciones de Uso en el presente documento." />
+
+
+            <TextView
+                android:id="@+id/lblNota4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                android:text="Los productos que son ofrecidos por nuestro aplicativo serán cobrados por una página web tercera
+y en tal caso estarán sujetos a sus propios Términos y Condiciones. El usuario puede elegir y
+cambiar la clave para su acceso de administración de la cuenta en cualquier momento, en caso de
+que se haya registrado y que sea necesario para la compra de alguno de nuestros productos, no se
+asume la responsabilidad en caso de que entregue dicha clave a terceros." />
+
+
+            <TextView
+                android:id="@+id/lblNota6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                android:text="Todas las compras y transacciones que se lleven a cabo por medio de este aplicativo, están sujetas
+a un proceso de confirmación y verificación de la forma de pago, validación de la factura (en caso
+de existir) y el cumplimiento de las condiciones requeridas por el medio de pago seleccionado. En
+algunos casos puede que se requiera una verificación por medio de correo electrónico." />
+             <TextView
+                android:id="@+id/lblNota8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                 android:text="Los precios de los productos ofrecidos en este aplicativo son válidos solamente en las compras
+realizadas en este aplicativo."/>
+                  <TextView
+                android:id="@+id/lblNota9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/texto"
+                android:text="LICENCIA" />
+            <TextView
+                android:id="@+id/lblNota10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                android:text="A través de su aplicativo concede una licencia para que los usuarios utilicen los productos que son
+vendidos en esta app de acuerdo a los Términos y Condiciones que se describen en este
+documento." />
+            <TextView
+                android:id="@+id/lblNota11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/texto"
+                android:text="PRIVACIDAD" />
+            <TextView
+                android:id="@+id/lblNota12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/robotolight"
+                android:textColor="@color/texto"
+                android:layout_marginBottom="40dp"
+                android:text="Este aplicativo garantiza que la información personal que usted envía cuenta con las seguridades
+necesarias para garantizar la confidencialidad de la misma." />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <include
+        layout="@layout/footer"
+        />
+</RelativeLayout>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Soli_tag"
+    android:background="@color/fondo"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/mibarra"
+       android:id="@+id/title"
+       android:paddingLeft="16dp"
+       android:paddingRight="16dp">
+       <TextView
+           android:id="@+id/textView10"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="SOLICITUD DE TAG"
+           android:textColor="@color/colorPrimary"
+           android:textSize="24dp"
+           android:textStyle="bold"
+           android:autoSizeTextType="uniform"/>
+   </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/title"
+        android:paddingLeft="16dp"
+        android:layout_marginBottom="45dp"
+        android:paddingRight="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="164dp"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Tipo de documento:"
+                        android:textColor="@color/texto"
+                        android:textSize="18dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerTipoDoc"
+                        android:layout_width="164dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Número de cédula o RUC:"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/editCedula"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:ems="10"
+                    android:fontFamily="@font/robotolight"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:text=""
+                    android:textColor="@color/texto"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="164dp"
+                    android:layout_height="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Nombres:"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/editNombre"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/robotolight"
+                    android:inputType="textPersonName"
+                    android:maxLength="15"
+                    android:text=""
+                    android:textColor="@color/texto"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="164dp"
+                    android:layout_height="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Apellidos:"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/editApellido"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/robotolight"
+                    android:inputType="textPersonName"
+                    android:maxLength="15"
+                    android:text=""
+                    android:textColor="@color/texto"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="164dp"
+                    android:layout_height="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Dirección Domicilio"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/editDirecc"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/robotolight"
+                    android:inputType="textPersonName"
+                    android:maxLength="50"
+                    android:text=""
+                    android:textColor="@color/texto"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="164dp"
+                    android:layout_height="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Telefono fijo:"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/editTelefono1"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/robotolight"
+                    android:inputType="phone"
+                    android:maxLength="7"
+                    android:text=""
+                    android:textColor="@color/texto"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="321dp"
+                    android:layout_height="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Telefono movil"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/editTelefono2"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/robotolight"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:text=""
+                    android:textColor="@color/texto"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="164dp"
+                    android:layout_height="20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Correo"
+                    android:textColor="@color/texto"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/editCorreo"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:fontFamily="@font/robotolight"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
+                    android:text=""
+                    android:textColor="@color/texto"
+                    android:textCursorDrawable="@color/colorAccent" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnCedula"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/colorApp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Fotografiar Cédula del Cliente"
+                    android:textColor="@color/fondo" />
+
+                <ImageView
+                    android:id="@+id/imageCedula"
+                    android:layout_width="320dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                     />
+
+                <Button
+                    android:id="@+id/btnEnviar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorApp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Continuar"
+                    android:textColor="@color/fondo" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include
+        layout="@layout/footer" />
+</RelativeLayout>

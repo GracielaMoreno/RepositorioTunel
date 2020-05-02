@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context=".Actu_plac"
+    >
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorApp"
+        android:id="@+id/mibarra">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/img_regresar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/flecha"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"/>
+
+            <ImageView
+                android:id="@+id/img_cabecera"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logoemmop"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_below="@+id/mibarra"
+    android:layout_marginBottom="45dp">
+    <LinearLayout
+        android:id="@+id/body"
+        android:layout_width="fill_parent"
+        android:layout_height="520dp"
+
+        android:orientation="vertical"
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gothambook"
+            android:text="CONTRATO DE ADQUISICIÓN DE TAG O CAMBIO DE VEHICULO"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"/>
+
+        <TextView
+            android:id="@+id/lblNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/lbltitulo"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/robotolight"
+            android:text="Estimado cliente:"
+            android:textColor="@color/texto" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/logi_llave" />
+
+            <TextView
+                android:id="@+id/lblNota0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_below="@+id/lbltitulo"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotolight"
+                android:text="El dispositivo TAG es de uso exclusivo del vehículo registrado en este formulario de adquisición."
+                android:textColor="@color/texto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/logi_llave" />
+
+            <TextView
+                android:id="@+id/lblNota1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblNota0"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotolight"
+                android:text="La falta de pago de la tarifa establecida será reportada como evasión a la entidad competente de tránsito."
+                android:textColor="@color/texto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/logi_llave" />
+
+            <TextView
+                android:id="@+id/lblNota2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblNota1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotolight"
+                android:text="A partir de la notificación por parte de la EPMMOP respecto a la validación de la información proporcionada por el usuario, se podrá hacer uso del carril telepeaje bajo las condiciones aceptadas."
+                android:textColor="@color/texto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/logi_llave" />
+
+            <TextView
+                android:id="@+id/lblNota8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lblNota1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/robotolight"
+                android:text="El dispositivo TAG no debe ser retirado del Parabrisas del vehículo bajo ningún concepto"
+                android:textColor="@color/texto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="94dp">
+
+            <CheckBox
+                android:id="@+id/chk_acep_term"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:layout_marginBottom="200dp"
+                android:layout_marginTop="30dp"
+                android:buttonTint="@color/texto"
+                android:checked="false"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Acepto los terminos del contrato"
+                android:textColor="@color/texto"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="63dp"
+            android:layout_below="@+id/body"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <Button
+                android:id="@+id/btnEnviar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/body"
+                android:background="@color/colorApp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Enviar Solicitud"
+                android:textColor="@color/fondo"
+
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+    <include layout="@layout/footer"/>
+
+</RelativeLayout>
