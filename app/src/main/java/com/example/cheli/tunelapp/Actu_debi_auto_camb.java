@@ -211,7 +211,7 @@ public class Actu_debi_auto_camb extends AppCompatActivity {
 
             String TramaEnviar = getString(R.string.cm_auto_debi_auto_camb_credito) + "," + cl_codigo + "," + cut_codigo + "," + cod_bancoTARJ + "," + cod_tarj + "," + mes + "," + anio + "," + numTarjeta + "," + cod_numPasadas;
             //TextView mensaje = (TextView) findViewById(R.id.lblMensaje);
-            Log.e("tarjeta", TramaEnviar);
+            //Log.e("tarjeta", TramaEnviar);
             ob.conectar();
             ob.enviar(TramaEnviar);
             ob.cerrar();

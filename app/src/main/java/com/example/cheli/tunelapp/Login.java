@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity {
     String Usuario;
     Dialog dialog;
     String tipoDoc;
-
+String passEncrip;
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,7 +204,9 @@ public class Login extends AppCompatActivity {
         else {
             //Enviar y Recibir Trama de Login
             if (isOnline(this) == true) {
-                envia = getString(R.string.cm_login_menu_ingreso) + "," + l + "," + p;
+                Encriptar(p);
+
+                envia = getString(R.string.cm_login_menu_ingreso) + "," + l + "," + passEncrip;
                 ob.conectar();
                 ob.enviar(envia);
                 ob.cerrar();
@@ -287,7 +289,14 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                         }
                     }
-
+                    if (CodigoResp.equals("5")) {
+                        if (vectorTramaRecibida.length == 2) {
+                            Mensaje = vectorTramaRecibida[1];
+                            Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
+                        }
+                    }
                 }
             }else{
                 Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
@@ -541,7 +550,7 @@ public class Login extends AppCompatActivity {
                     if (vectorPagos.length == 2) {
                         Mensaje = vectorPagos[1];
                         Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
-
+                        ver_list_tags(cl_codigo,Usuario,vehiculos);
 
                     } else {
                         Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
@@ -618,6 +627,20 @@ public class Login extends AppCompatActivity {
         }}catch (Exception e){
             Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void Encriptar(String p){
+        String name = p;
+        char a1 = (char) (name.charAt(0)+1);
+        char a3 = (char) (name.charAt(1)+2);
+        char a5 = (char) (name.charAt(2)+3);
+        char a7 = (char) (name.charAt(3)+4);
+        char a9 = (char) (name.charAt(4)+5);
+        char a11 = (char) (name.charAt(5)+6);
+        passEncrip=""+a1+a3+a5+a7+a9+a11;
+        System.out.println("The number is : "+a1+a3+a5+a7+a9+a11); // the value is 97
+
+
     }
 }
 

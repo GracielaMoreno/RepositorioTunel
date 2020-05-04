@@ -31,6 +31,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -254,9 +255,14 @@ public class Menu extends AppCompatActivity {
                     String Mensaje=vectorTramaRecibi[1];
                     auto_debi_auto(Mensaje);
                 }if (CodResp.equals("2")){
-                String Mensaje=vectorTramaRecibi[1];
-                Toast.makeText(Menu.this, Mensaje, Toast.LENGTH_LONG).show();
-                }}else{
+                    String Mensaje=vectorTramaRecibi[1];
+                    auto_debi_auto(Mensaje);
+               // Toast.makeText(Menu.this, Mensaje, Toast.LENGTH_LONG).show();
+                }if (CodResp.equals("3")){
+                        String Mensaje=vectorTramaRecibi[1];
+                        Toast.makeText(Menu.this, Mensaje, Toast.LENGTH_LONG).show();
+                    }
+                }else{
                     Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                 }
                 }else{
@@ -786,4 +792,6 @@ public class Menu extends AppCompatActivity {
     }catch (Exception e){
             Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
         }}
+
+
 }
