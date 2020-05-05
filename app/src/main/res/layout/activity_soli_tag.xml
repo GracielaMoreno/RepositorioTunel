@@ -223,7 +223,7 @@
                     android:layout_height="40dp"
                     android:backgroundTint="@color/colorAccent"
                     android:fontFamily="@font/robotolight"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:maxLength="7"
                     android:text=""
                     android:textColor="@color/texto"
@@ -251,7 +251,7 @@
                     android:layout_height="40dp"
                     android:backgroundTint="@color/colorAccent"
                     android:fontFamily="@font/robotolight"
-                    android:inputType="phone"
+                    android:inputType="number"
                     android:maxLength="10"
                     android:text=""
                     android:textColor="@color/texto"
@@ -279,9 +279,8 @@
                     android:layout_height="40dp"
                     android:backgroundTint="@color/colorAccent"
                     android:fontFamily="@font/robotolight"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:maxLength="50"
-                    android:text=""
                     android:textColor="@color/texto"
                     android:textCursorDrawable="@color/colorAccent" />
             </LinearLayout>

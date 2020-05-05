@@ -167,7 +167,7 @@ public class Soli_tag extends AppCompatActivity {
                             }
                             try {
                                 if (isOnline(getApplicationContext()) == true) {
-                                    String enviar = getString(R.string.cm_soli_tag) + "," + cedula + "," + tipoDoc + "," + nombre + "," + apellido + "," + direccion + "," + telefono1 + "," + telefono2 + "," + correo;
+                                    String enviar = getString(R.string.cm_soli_tag) + "," + cedula + "," + tipoDoc + "," + nombre + "," + apellido + "," + direccion + "," + telefono1 + "," + telefono2 + "," + correo+",0";
                                     ob.conectar();
                                     ob.enviar(enviar);
                                     ob.cerrar();
@@ -191,6 +191,7 @@ public class Soli_tag extends AppCompatActivity {
                                             }
                                             Bundle bundle = new Bundle();
                                             bundle.putString("st_codigo", st_codigo);
+                                            bundle.putString("cedula", cedula);
                                             bundle.putString("codigo_trama", getString(R.string.cm_contrato_comp_tag_cl_nuevo));
                                             bundle.putString("lugares", lugares);
                                             bundle.putString("url", urlFotos);
@@ -293,7 +294,7 @@ public class Soli_tag extends AppCompatActivity {
                     public void onResponse(Call<Imagen> call, Response<Imagen> response) {
                         if (response.isSuccessful()) {
                             path = response.body().getImagePath();
-                            Toast.makeText(getApplicationContext(), "Imagen guardada con éxito!", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Imagen guardada con éxito!", Toast.LENGTH_LONG).show();
 
                         } else {
 

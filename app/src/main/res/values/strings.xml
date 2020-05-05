@@ -31,6 +31,7 @@
     <string name="cm_contrato_camb_vehi">9-0</string>
     <string name="cm_contrato_comp_tag_cl_antiguo">9-1</string>
     <string name="cm_contrato_comp_tag_cl_nuevo">9-2</string>
+    <string name="cm_contrato_envio_pin">9-3</string>
 
     <string name="cm_auto_debi_auto">10-0</string>
 

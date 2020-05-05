@@ -318,7 +318,8 @@ public class Soli_tag_matr extends AppCompatActivity {
                     public void onResponse(Call<Imagen> call, Response<Imagen> response) {
                         if (response.isSuccessful()) {
                             path = response.body().getImagePath();
-                            Toast.makeText(getApplicationContext(), "Imagen guardada con éxito!", Toast.LENGTH_LONG).show();
+                            //System.out.println("Imagen guardada con éxito!");
+                            // Toast.makeText(getApplicationContext(), "Imagen guardada con éxito!", Toast.LENGTH_LONG).show();
                         } else {
 
                             try {
@@ -554,7 +555,8 @@ public class Soli_tag_matr extends AppCompatActivity {
                                                             Bundle bundle = new Bundle();
                                                             bundle.putString("st_codigo", st_codigo);
                                                             bundle.putString("codigo_trama", getString(R.string.cm_contrato_comp_tag_cl_nuevo));
-
+                                                            String cedula = getIntent().getStringExtra("cedula");
+                                                            bundle.putString("cedula", cedula);
                                                             if (cod_lug.equals("3")) {
                                                                 editText.setVisibility(View.VISIBLE);
                                                                 editText1.setVisibility(View.VISIBLE);
@@ -613,13 +615,13 @@ public class Soli_tag_matr extends AppCompatActivity {
                                                             //String TramaRecibida="1|1001|url";
                                                             String vectorRecibido[] = TramaRecibida.split("\\|");
                                                             String CodigoRespuesta = vectorRecibido[0];
-                                                            if (vectorRecibido.length == 4) {
-                                                                if (CodigoRespuesta.equals("1")) {
+
+                                                            if (CodigoRespuesta.equals("1")) {
+                                                                if (vectorRecibido.length == 4) {
                                                                     st_codigo = vectorRecibido[2];
                                                                     url = vectorRecibido[3];
                                                                     bundle.putString("st_codigo", st_codigo);
                                                                     bundle.putString("codigo_trama", getString(R.string.cm_contrato_comp_tag_cl_antiguo));
-
                                                                     if (cod_lug.equals("3")) {
                                                                         editText.setVisibility(View.VISIBLE);
                                                                         editText1.setVisibility(View.VISIBLE);
@@ -669,18 +671,19 @@ public class Soli_tag_matr extends AppCompatActivity {
                                                                         startActivity(i);
                                                                         finish();
                                                                     }
+                                                                } else {
+                                                                    Toast.makeText(getApplicationContext(), R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                                                                 }
-                                                            } else {
-                                                                Toast.makeText(getApplicationContext(), R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                                                             }
 
-                                                            if (vectorRecibido.length == 2) {
-                                                                if (CodigoRespuesta.equals("2")) {
+
+                                                            if (CodigoRespuesta.equals("2")) {
+                                                                if (vectorRecibido.length == 2) {
                                                                     String Mensaje = vectorRecibido[1];
                                                                     Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
+                                                                } else {
+                                                                    Toast.makeText(getApplicationContext(), R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                                                                 }
-                                                            } else {
-                                                                Toast.makeText(getApplicationContext(), R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                                                             }
 
                                                         }

@@ -263,7 +263,7 @@ public class Actu_plac_foto extends AppCompatActivity {
 
     public void ver_contrato() throws IOException, JSONException {
 
-        Toast.makeText(getApplicationContext(), "Imagen guardada con éxito!", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Imagen guardada con éxito!", Toast.LENGTH_LONG).show();
         Bundle bundle = new Bundle();
         bundle.putString("cut_codigo", codigovehiculo);
         bundle.putString("codigo_trama", getString(R.string.cm_contrato_camb_vehi));

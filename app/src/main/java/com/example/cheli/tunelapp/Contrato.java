@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -37,6 +39,9 @@ public class Contrato extends AppCompatActivity {
     private cls_conexion ob;
     String referencia;
     String lugares;
+    String cedula;
+    EditText txtPin;
+    String pin;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -46,7 +51,8 @@ public class Contrato extends AppCompatActivity {
         setContentView(R.layout.activity_contrato);
         chkRecoCred = (CheckBox) findViewById(R.id.chk_acep_term);
         chkRecoCred.setChecked(false);
-
+        txtPin = findViewById(R.id.editTextpin);
+        txtPin.setVisibility(View.GONE);
 
         try {
             obtenerDatos();
@@ -57,6 +63,7 @@ public class Contrato extends AppCompatActivity {
         }
 
         btnEnviar = findViewById(R.id.btnEnviar);
+        btnEnviar.setEnabled(false);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +82,7 @@ public class Contrato extends AppCompatActivity {
 
             }
         });
+
         ImageView img = (ImageView) findViewById(R.id.img_regresar);
         img.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -106,11 +114,181 @@ public class Contrato extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    public void EnviarPin(View view) throws IOException, JSONException {
+        txtPin.setVisibility(View.VISIBLE);
+        btnEnviar.setEnabled(true);
+        if (CodigoTrama.equals(getString(R.string.cm_contrato_camb_vehi))) {
+            try {
+
+                if (isOnline(this) == true) {
+                    pin = txtPin.getText().toString();
+                    String enviar = getString(R.string.cm_contrato_envio_pin) + "," + codigoUsuario + ",2,"+codigovehiculos;
+                    ob.conectar();
+                    ob.enviar(enviar);
+                    ob.cerrar();
+                    String TramaRecibida = ob.cadena.toString();
+                    //String TramaRecibida = "1|La solicitud de cambio de vehiculo ha sido enviada correctamente";
+                    String vectorRecibido[] = TramaRecibida.split("\\|");
+                    String CodigoRespuesta = vectorRecibido[0];
+                    if (CodigoRespuesta.equals("1")) {
+                        String Mensaje = vectorRecibido[1];
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                        builder.setTitle("Informativo");
+                        builder.setMessage(Mensaje);
+                        builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        builder.create().show();
+                    }
+                    if (CodigoRespuesta.equals("2")) {
+                        String Mensaje = vectorRecibido[1];
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                        builder.setTitle("Informativo");
+                        builder.setMessage(Mensaje);
+                        builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        builder.create().show();
+                    }
+                    if (CodigoRespuesta.equals("3")) {
+                        String Mensaje = vectorRecibido[1];
+                        Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
+            }
+        }
+
+        if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_antiguo))) {
+            try {
+                if (isOnline(this) == true) {
+                    String enviar = getString(R.string.cm_contrato_envio_pin) + "," + cedula + ",1," + st_Codigo;
+                    ob.conectar();
+                    ob.enviar(enviar);
+                    ob.cerrar();
+                    String TramaRecibida = ob.cadena.toString();
+                    //String TramaRecibida = "1|mensaje";
+                    String vectorRecibido[] = TramaRecibida.split("\\|");
+                    String CodigoRespuesta = vectorRecibido[0];
+                    if (vectorRecibido.length == 2) {
+                        if (CodigoRespuesta.equals("1")) {
+                            String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje);
+                            builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            builder.create().show();
+
+                        }
+                        if (CodigoRespuesta.equals("2")) {
+                            String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje);
+                            builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            builder.create().show();
+                        }
+                        if (CodigoRespuesta.equals("3")) {
+                            String Mensaje = vectorRecibido[1];
+                            Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
+            }
+        }
+        if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_nuevo))) {
+
+            try {
+                if (isOnline(this) == true) {
+                    cedula = getIntent().getStringExtra("cedula");
+                    String enviar = getString(R.string.cm_contrato_envio_pin) + "," + cedula + ",1," + st_Codigo;
+                    ob.conectar();
+                    ob.enviar(enviar);
+                    ob.cerrar();
+                    String TramaRecibida = ob.cadena.toString();
+                    //String TramaRecibida = "1|mensaje";
+                    String vectorRecibido[] = TramaRecibida.split("\\|");
+                    String CodigoRespuesta = vectorRecibido[0];
+                    if (vectorRecibido.length == 2) {
+                        if (CodigoRespuesta.equals("1")) {
+                            String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje);
+                            builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            builder.create().show();
+
+                        }
+                        if (CodigoRespuesta.equals("2")) {
+                            String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje);
+                            builder.setNegativeButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            builder.create().show();
+                        }
+                        if (CodigoRespuesta.equals("3")) {
+                            String Mensaje = vectorRecibido[1];
+                            Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
+                    }
+
+
+                } else {
+                    Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     public void Enviar() throws IOException, JSONException {
         if (CodigoTrama.equals(getString(R.string.cm_contrato_camb_vehi))) {
             try {
+
                 if (isOnline(this) == true) {
-                    String enviar = getString(R.string.cm_contrato_camb_vehi) + "," + codigoUsuario + "," + codigovehiculos;
+                    pin = txtPin.getText().toString();
+                    String enviar = getString(R.string.cm_contrato_camb_vehi) + "," + codigoUsuario + "," + codigovehiculos + "," + pin;
                     ob.conectar();
                     ob.enviar(enviar);
                     ob.cerrar();
@@ -139,8 +317,24 @@ public class Contrato extends AppCompatActivity {
                     }
                     if (CodigoRespuesta.equals("2")) {
                         String Mensaje = vectorRecibido[1];
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                        builder.setTitle("Informativo");
+                        builder.setMessage(Mensaje)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                       /* Intent i = new Intent(Contrato.this, Login.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                        startActivity(i);
+                                        finish();*/
+                                    }
+                                });
+                        builder.create().show();
+                    }
+                    if (CodigoRespuesta.equals("3")) {
+                        String Mensaje = vectorRecibido[1];
                         Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
                     }
+
                 } else {
                     Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
                 }
@@ -152,11 +346,13 @@ public class Contrato extends AppCompatActivity {
         if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_antiguo))) {
             try {
                 if (isOnline(this) == true) {
+                    pin = txtPin.getText().toString();
                     direccion = getIntent().getStringExtra("direccion");
                     codi_post = getIntent().getStringExtra("codi_post");
                     referencia = getIntent().getStringExtra("referencia");
                     lug_ret_tag = getIntent().getStringExtra("lug_ret_tag");
-                    String enviar = getString(R.string.cm_contrato_comp_tag_cl_antiguo) + "," + codigoUsuario + "," + st_Codigo + "," + lug_ret_tag + "," + direccion + "," + codi_post + "," + referencia;
+                    String enviar = getString(R.string.cm_contrato_comp_tag_cl_antiguo) + "," + codigoUsuario + "," + st_Codigo + "," + lug_ret_tag + "," + direccion + "," + codi_post + "," + referencia + "," + pin;
+                    Log.e("enviar",enviar);
                     ob.conectar();
                     ob.enviar(enviar);
                     ob.cerrar();
@@ -184,11 +380,27 @@ public class Contrato extends AppCompatActivity {
                         }
                         if (CodigoRespuesta.equals("2")) {
                             String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            /*Intent i = new Intent(Contrato.this, Menu.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                            startActivity(i);
+                                            finish();*/
+                                        }
+                                    });
+                            builder.create().show();
+                        }
+                        if (CodigoRespuesta.equals("3")) {
+                            String Mensaje = vectorRecibido[1];
                             Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
                         }
                     } else {
                         Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                     }
+
                 } else {
                     Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
                 }
@@ -197,9 +409,16 @@ public class Contrato extends AppCompatActivity {
             }
         }
         if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_nuevo))) {
+
             try {
                 if (isOnline(this) == true) {
-                    String enviar = getString(R.string.cm_contrato_comp_tag_cl_nuevo) + "," + st_Codigo + "," + lug_ret_tag + "," + direccion + "," + codi_post + "," + referencia;
+                    pin = txtPin.getText().toString();
+                    direccion = getIntent().getStringExtra("direccion");
+                    codi_post = getIntent().getStringExtra("codi_post");
+                    referencia = getIntent().getStringExtra("referencia");
+                    lug_ret_tag = getIntent().getStringExtra("lug_ret_tag");
+                    String enviar = getString(R.string.cm_contrato_comp_tag_cl_nuevo) + "," + st_Codigo + "," + lug_ret_tag + "," + direccion + "," + codi_post + "," + referencia + "," + pin;
+                    Log.e("enviar",enviar);
                     ob.conectar();
                     ob.enviar(enviar);
                     ob.cerrar();
@@ -226,11 +445,28 @@ public class Contrato extends AppCompatActivity {
                         }
                         if (CodigoRespuesta.equals("2")) {
                             String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                           /* Intent i = new Intent(Contrato.this, Login.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                            startActivity(i);
+                                            finish();*/
+                                        }
+                                    });
+                            builder.create().show();
+                        }
+                        if (CodigoRespuesta.equals("3")) {
+                            String Mensaje = vectorRecibido[1];
                             Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
                         }
                     } else {
                         Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                     }
+
+
                 } else {
                     Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
                 }
@@ -317,6 +553,7 @@ public class Contrato extends AppCompatActivity {
                 lugares = getIntent().getStringExtra("lugares");
                 SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
                 codigoUsuario = preferencias.getString("cl_codigo", "");
+                cedula = preferencias.getString("cedula", "");
             } else {
                 Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
             }
@@ -330,4 +567,6 @@ public class Contrato extends AppCompatActivity {
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
     }
-}
+
+    }
+
