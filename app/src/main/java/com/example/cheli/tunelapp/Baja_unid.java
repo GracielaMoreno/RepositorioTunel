@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -30,7 +31,6 @@ Button btnPin;
 Button btnEnviar;
 String codigoUsuario;
 String codigoVehiculo;
-String Vehiculos;
 String numTag;
 String Placa;
 TextView textInfoVehi;
@@ -102,16 +102,7 @@ String l;
                             public void onClick(DialogInterface dialog, int id) {
 
                                 Intent i = new Intent(Baja_unid.this,Menu.class);
-                                Bundle bundle = new Bundle();
-                                bundle.putString("Vehiculos", Vehiculos);
-                                bundle.putString("correo", correo);
-                                bundle.putString("nombre", nombreUsuario);
-                                bundle.putString("cl_codigo", codigoUsuario);
-                                bundle.putString("cut_propietario", cut_propietario);
-                                bundle.putString("tipoDoc",tipoDoc);
-                                bundle.putString("cedula",l);
                                 i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                                i.putExtras(bundle);
                                 startActivity(i);
                                 finish();
                             }
@@ -156,15 +147,12 @@ String l;
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // Toast.makeText(Baja_unid.this, Mensaje, Toast.LENGTH_LONG).show();
+
+                            SharedPreferences preferencias=getSharedPreferences("datos", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editorDatos=preferencias.edit();
+                            editorDatos.putString("Vehiculos", Vehiculos1);
+                            editorDatos.commit();
                             Intent i = new Intent(Baja_unid.this, Menu.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putString("Vehiculos", Vehiculos1);
-                            bundle.putString("correo", correo);
-                            bundle.putString("nombre", nombreUsuario);
-                            bundle.putString("cl_codigo", codigoUsuario);
-                            bundle.putString("tipoDoc",tipoDoc);
-                            bundle.putString("cedula",l);
-                            i.putExtras(bundle);
                             startActivity(i);
                             finish();
                         }
@@ -230,18 +218,9 @@ String l;
         }
         return super.onKeyDown(keyCode, event);
     }
-
     public void navegacion()throws IOException,JSONException{
     Intent intent = new Intent(Baja_unid.this, Menu.class);
     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-    Bundle bundle1=new Bundle();
-    bundle1.putString("Vehiculos", Vehiculos);
-    bundle1.putString("correo", correo);
-    bundle1.putString("nombre", nombreUsuario);
-    bundle1.putString("cl_codigo", codigoUsuario);
-    bundle1.putString("tipoDoc",tipoDoc);
-    bundle1.putString("cedula",l);
-    intent.putExtras(bundle1);
     startActivity(intent);
     finish();
 }
@@ -252,14 +231,11 @@ String l;
     }
     public void obtenerDato()throws IOException,JSONException{
         ob=new cls_conexion(getString(R.string.servidor_tramas), 8200);
-        tipoDoc= getIntent().getStringExtra("tipoDoc");
-        l= getIntent().getStringExtra("cedula");
-        codigoUsuario=getIntent().getStringExtra("cl_codigo");
+        SharedPreferences preferencias=getSharedPreferences("datos", Context.MODE_PRIVATE);
+        codigoUsuario=preferencias.getString("cl_codigo","");
         codigoVehiculo=getIntent().getStringExtra("cut_codigo");
-        nombreUsuario=getIntent().getStringExtra("nombre");
-        correo=getIntent().getStringExtra("correo");
+        nombreUsuario=preferencias.getString("nombre","");
         Placa=getIntent().getStringExtra("placa");
-        Vehiculos=getIntent().getStringExtra("Vehiculos");
         numTag=getIntent().getStringExtra("numTag");
         cut_propietario=getIntent().getStringExtra("cut_propietario");
         textInfoVehi.setText("YO,"+nombreUsuario+" deseo dar de baja al "+numTag+" pertenieciente al vehiculo con placa "+Placa);

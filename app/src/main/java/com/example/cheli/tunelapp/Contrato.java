@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -31,23 +32,19 @@ public class Contrato extends AppCompatActivity {
     String lug_ret_tag = "";
     CheckBox chkRecoCred;
     Button btnEnviar;
-    String vehiculos;
-    String nombre;
-    String correo;
     String direccion;
     String codi_post;
     private cls_conexion ob;
     String referencia;
-    String tipoDoc;
-    String l;
     String lugares;
+
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_contrato);
-        chkRecoCred = (CheckBox)findViewById(R.id.chk_acep_term);
+        chkRecoCred = (CheckBox) findViewById(R.id.chk_acep_term);
         chkRecoCred.setChecked(false);
 
 
@@ -59,12 +56,12 @@ public class Contrato extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        btnEnviar=findViewById(R.id.btnEnviar);
+        btnEnviar = findViewById(R.id.btnEnviar);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (chkRecoCred.isChecked()){
+                if (chkRecoCred.isChecked()) {
                     try {
                         Enviar();
                     } catch (IOException e) {
@@ -72,8 +69,8 @@ public class Contrato extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else{
-                    Toast.makeText(getApplicationContext(),"Debe aceptar los terminos y condiciones",Toast.LENGTH_LONG);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Debe aceptar los terminos y condiciones", Toast.LENGTH_LONG);
                 }
 
             }
@@ -109,255 +106,225 @@ public class Contrato extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void Enviar() throws IOException, JSONException{
+    public void Enviar() throws IOException, JSONException {
         if (CodigoTrama.equals(getString(R.string.cm_contrato_camb_vehi))) {
-            try{
+            try {
                 if (isOnline(this) == true) {
-            String enviar = getString(R.string.cm_contrato_camb_vehi) + "," + codigoUsuario + "," + codigovehiculos;
-            ob.conectar();
-            ob.enviar(enviar);
-            ob.cerrar();
-            String TramaRecibida = ob.cadena.toString();
-            //String TramaRecibida = "1|La solicitud de cambio de vehiculo ha sido enviada correctamente";
-            String vectorRecibido[] = TramaRecibida.split("\\|");
-            String CodigoRespuesta = vectorRecibido[0];
-            if (CodigoRespuesta.equals("1")) {
-                String Mensaje = vectorRecibido[1];
-                AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this,R.style.CustomDialog);
-                builder.setTitle("Informativo");
-                builder.setMessage(Mensaje)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                    String enviar = getString(R.string.cm_contrato_camb_vehi) + "," + codigoUsuario + "," + codigovehiculos;
+                    ob.conectar();
+                    ob.enviar(enviar);
+                    ob.cerrar();
+                    String TramaRecibida = ob.cadena.toString();
+                    //String TramaRecibida = "1|La solicitud de cambio de vehiculo ha sido enviada correctamente";
+                    String vectorRecibido[] = TramaRecibida.split("\\|");
+                    String CodigoRespuesta = vectorRecibido[0];
+                    if (CodigoRespuesta.equals("1")) {
+                        String Mensaje = vectorRecibido[1];
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                        builder.setTitle("Informativo");
+                        builder.setMessage(Mensaje)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
 
-                                Bundle bundle = new Bundle();
-                                bundle.putString("Vehiculos",vehiculos);
-                                bundle.putString("nombre",nombre);
-                                bundle.putString("cl_codigo", codigoUsuario);
-                                bundle.putString("correo",correo);
-                                bundle.putString("tipoDoc",tipoDoc);
-                                bundle.putString("cedula",l);
-                                bundle.putString("lugares", lugares);
-                                Intent i = new Intent(Contrato.this, Menu.class);
-                                i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                                i.putExtras(bundle);
-                                startActivity(i);
-                                finish();
-                            }
-                        });
-                builder.create().show();
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("lugares", lugares);
+                                        Intent i = new Intent(Contrato.this, Menu.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                        i.putExtras(bundle);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                });
+                        builder.create().show();
+                    }
+                    if (CodigoRespuesta.equals("2")) {
+                        String Mensaje = vectorRecibido[1];
+                        Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
             }
-            if (CodigoRespuesta.equals("2")) {
-                String Mensaje = vectorRecibido[1];
-                Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
-            }
-        }else{
-            Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
-        }}catch (Exception e){
-        Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
-    }
         }
 
         if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_antiguo))) {
-            try{
+            try {
                 if (isOnline(this) == true) {
-            direccion=getIntent().getStringExtra("direccion");
-            codi_post=getIntent().getStringExtra("codi_post");
-            referencia=getIntent().getStringExtra("referencia");
-            lug_ret_tag = getIntent().getStringExtra("lug_ret_tag");
-            String enviar = getString(R.string.cm_contrato_comp_tag_cl_antiguo) +","+codigoUsuario+ "," + st_Codigo + "," + lug_ret_tag+","+direccion+","+codi_post+","+referencia;
-            ob.conectar();
-            ob.enviar(enviar);
-            ob.cerrar();
-            String TramaRecibida = ob.cadena.toString();
-            //String TramaRecibida = "1|mensaje";
-            String vectorRecibido[] = TramaRecibida.split("\\|");
-            String CodigoRespuesta = vectorRecibido[0];
-            if (vectorRecibido.length==2){
-            if (CodigoRespuesta.equals("1")) {
-                String Mensaje = vectorRecibido[1];
-                AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this,R.style.CustomDialog);
-                builder.setTitle("Informativo");
-                builder.setMessage(Mensaje)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Bundle bundle = new Bundle();
-                                bundle.putString("Vehiculos",vehiculos);
-                                bundle.putString("nombre",nombre);
-                                bundle.putString("cl_codigo", codigoUsuario);
-                                bundle.putString("correo",correo);
-                                bundle.putString("tipoDoc",tipoDoc);
-                                bundle.putString("cedula",l);
-                                Intent i = new Intent(Contrato.this, Menu.class);
-                                i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                                i.putExtras(bundle);
-                                startActivity(i);
-                                finish();
-                            }
-                        });
-                builder.create().show();
+                    direccion = getIntent().getStringExtra("direccion");
+                    codi_post = getIntent().getStringExtra("codi_post");
+                    referencia = getIntent().getStringExtra("referencia");
+                    lug_ret_tag = getIntent().getStringExtra("lug_ret_tag");
+                    String enviar = getString(R.string.cm_contrato_comp_tag_cl_antiguo) + "," + codigoUsuario + "," + st_Codigo + "," + lug_ret_tag + "," + direccion + "," + codi_post + "," + referencia;
+                    ob.conectar();
+                    ob.enviar(enviar);
+                    ob.cerrar();
+                    String TramaRecibida = ob.cadena.toString();
+                    //String TramaRecibida = "1|mensaje";
+                    String vectorRecibido[] = TramaRecibida.split("\\|");
+                    String CodigoRespuesta = vectorRecibido[0];
+                    if (vectorRecibido.length == 2) {
+                        if (CodigoRespuesta.equals("1")) {
+                            String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent i = new Intent(Contrato.this, Menu.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                            startActivity(i);
+                                            finish();
+                                        }
+                                    });
+                            builder.create().show();
 
 
+                        }
+                        if (CodigoRespuesta.equals("2")) {
+                            String Mensaje = vectorRecibido[1];
+                            Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
             }
-            if (CodigoRespuesta.equals("2")) {
-                String Mensaje = vectorRecibido[1];
-                Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
-            }}else{
-                Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
-            }
-        }else{
-            Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
-        }}catch (Exception e){
-        Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
-    }
         }
         if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_nuevo))) {
-            try{
+            try {
                 if (isOnline(this) == true) {
-            String enviar = getString(R.string.cm_contrato_comp_tag_cl_nuevo) + "," + st_Codigo + "," + lug_ret_tag+","+direccion+","+codi_post+","+referencia;
-            ob.conectar();
-            ob.enviar(enviar);
-            ob.cerrar();
-            String TramaRecibida = ob.cadena.toString();
-            //String TramaRecibida = "1|mensaje";
-            String vectorRecibido[] = TramaRecibida.split("\\|");
-            String CodigoRespuesta = vectorRecibido[0];
-            if (vectorRecibido.length==2){
-            if (CodigoRespuesta.equals("1")) {
-                String Mensaje = vectorRecibido[1];
-                AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this,R.style.CustomDialog);
-                builder.setTitle("Informativo");
-                builder.setMessage(Mensaje)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent i = new Intent(Contrato.this, Login.class);
-                                i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                                startActivity(i);
-                                finish();
-                            }
-                        });
-                builder.create().show();
+                    String enviar = getString(R.string.cm_contrato_comp_tag_cl_nuevo) + "," + st_Codigo + "," + lug_ret_tag + "," + direccion + "," + codi_post + "," + referencia;
+                    ob.conectar();
+                    ob.enviar(enviar);
+                    ob.cerrar();
+                    String TramaRecibida = ob.cadena.toString();
+                    //String TramaRecibida = "1|mensaje";
+                    String vectorRecibido[] = TramaRecibida.split("\\|");
+                    String CodigoRespuesta = vectorRecibido[0];
+                    if (vectorRecibido.length == 2) {
+                        if (CodigoRespuesta.equals("1")) {
+                            String Mensaje = vectorRecibido[1];
+                            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+                            builder.setTitle("Informativo");
+                            builder.setMessage(Mensaje)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent i = new Intent(Contrato.this, Login.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                            startActivity(i);
+                                            finish();
+                                        }
+                                    });
+                            builder.create().show();
 
-            }
-            if (CodigoRespuesta.equals("2")) {
-                String Mensaje = vectorRecibido[1];
-                Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
-            }}else{
-                Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
-            }
-                }else{
+                        }
+                        if (CodigoRespuesta.equals("2")) {
+                            String Mensaje = vectorRecibido[1];
+                            Toast.makeText(getApplicationContext(), Mensaje, Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
+                    }
+                } else {
                     Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
-                }}catch (Exception e){
+                }
+            } catch (Exception e) {
                 Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    public void navegacion()throws IOException, JSONException{
-    if (CodigoTrama.equals(getString(R.string.cm_contrato_camb_vehi))) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this,R.style.CustomDialog);
-        builder.setTitle("Telepeaje");
-        builder.setMessage("Desea abandonar el proceso? " + "Nota:Si abandona el proceso no se registrara su requerimiento.");
+    public void navegacion() throws IOException, JSONException {
+        if (CodigoTrama.equals(getString(R.string.cm_contrato_camb_vehi))) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+            builder.setTitle("Telepeaje");
+            builder.setMessage("Desea abandonar el proceso? " + "Nota:Si abandona el proceso no se registrara su requerimiento.");
 
-        builder.setPositiveButton("SALIR", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+            builder.setPositiveButton("SALIR", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-                Intent intent = new Intent(Contrato.this, Menu.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("Vehiculos", vehiculos);
-                bundle.putString("nombre", nombre);
-                bundle.putString("cl_codigo", codigoUsuario);
-                bundle.putString("correo", correo);
-                bundle.putString("tipoDoc",tipoDoc);
-                bundle.putString("cedula",l);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(Contrato.this, Menu.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intent);
+                    finish();
 
-            }
-        });
+                }
+            });
 
-        builder.setNegativeButton("CONTINUAR", null);
-        Dialog dialog = builder.create();
-        dialog.show();
+            builder.setNegativeButton("CONTINUAR", null);
+            Dialog dialog = builder.create();
+            dialog.show();
+        }
+        if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_antiguo))) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+            builder.setTitle("Telepeaje");
+            builder.setMessage("Desea abandonar el proceso? " + "Nota:Si abandona el proceso no se registrara su requerimiento.");
+
+            builder.setPositiveButton("SALIR", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(Contrato.this, Menu.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intent);
+                    finish();
+                }
+
+            });
+            builder.setNegativeButton("CONTINUAR", null);
+            Dialog dialog = builder.create();
+            dialog.show();
+        }
+        if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_nuevo))) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this, R.style.CustomDialog);
+            builder.setTitle("Telepeaje");
+            builder.setMessage("Desea abandonar el proceso? " + "Nota:Si abandona el proceso no se registrara su requerimiento.");
+
+            builder.setPositiveButton("SALIR", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    Intent i = new Intent(Contrato.this, Login.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(i);
+                    finish();
+
+                }
+            });
+            builder.setNegativeButton("CONTINUAR", null);
+            Dialog dialog = builder.create();
+            dialog.show();
+        }
     }
-    if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_antiguo))) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this,R.style.CustomDialog);
-        builder.setTitle("Telepeaje");
-        builder.setMessage("Desea abandonar el proceso? "+"Nota:Si abandona el proceso no se registrara su requerimiento.");
 
-        builder.setPositiveButton("SALIR", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-
-                Intent intent = new Intent(Contrato.this, Menu.class );
-                Bundle bundle = new Bundle();
-                bundle.putString("Vehiculos", vehiculos);
-                bundle.putString("nombre", nombre);
-                bundle.putString("cl_codigo", codigoUsuario);
-                bundle.putString("correo",correo);
-                bundle.putString("tipoDoc",tipoDoc);
-                bundle.putString("cedula",l);
-                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                finish();
-            }
-
-        });
-        builder.setNegativeButton("CONTINUAR", null);
-        Dialog dialog = builder.create();
-        dialog.show();
-    }
-    if (CodigoTrama.equals(getString(R.string.cm_contrato_comp_tag_cl_nuevo))) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(Contrato.this,R.style.CustomDialog);
-        builder.setTitle("Telepeaje");
-        builder.setMessage("Desea abandonar el proceso? " + "Nota:Si abandona el proceso no se registrara su requerimiento.");
-
-        builder.setPositiveButton("SALIR", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                Intent i = new Intent(Contrato.this, Login.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(i);
-                finish();
-
-            }
-        });
-        builder.setNegativeButton("CONTINUAR", null);
-        Dialog dialog = builder.create();
-        dialog.show();
-    }
-}
-
-    public void obtenerDatos() throws IOException,JSONException{
-        try{
+    public void obtenerDatos() throws IOException, JSONException {
+        try {
             if (isOnline(this) == true) {
-    ob = new cls_conexion(getString(R.string.servidor_tramas), 8200);
-    codigovehiculos = getIntent().getStringExtra("cut_codigo");
-    CodigoTrama = getIntent().getStringExtra("codigo_trama");
-    lug_ret_tag = getIntent().getStringExtra("lug_ret_tag");
-    st_Codigo = getIntent().getStringExtra("st_codigo");
-    direccion = getIntent().getStringExtra("direccion");
-    codi_post = getIntent().getStringExtra("codi_post");
-    referencia = getIntent().getStringExtra("referencia");
-    tipoDoc = getIntent().getStringExtra("tipoDoc");
-    l = getIntent().getStringExtra("cedula");
-    vehiculos = getIntent().getStringExtra("Vehiculos");
-    nombre = getIntent().getStringExtra("nombre");
-    lugares = getIntent().getStringExtra("lugares");
-    correo = getIntent().getStringExtra("correo");
-    codigoUsuario = getIntent().getStringExtra("cl_codigo");
-    lugares = getIntent().getStringExtra("lugares");
-            }else{
+                ob = new cls_conexion(getString(R.string.servidor_tramas), 8200);
+                codigovehiculos = getIntent().getStringExtra("cut_codigo");
+                CodigoTrama = getIntent().getStringExtra("codigo_trama");
+                lug_ret_tag = getIntent().getStringExtra("lug_ret_tag");
+                st_Codigo = getIntent().getStringExtra("st_codigo");
+                direccion = getIntent().getStringExtra("direccion");
+                codi_post = getIntent().getStringExtra("codi_post");
+                referencia = getIntent().getStringExtra("referencia");
+                lugares = getIntent().getStringExtra("lugares");
+                SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+                codigoUsuario = preferencias.getString("cl_codigo", "");
+            } else {
                 Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
-            }}catch (Exception e){
+            }
+        } catch (Exception e) {
             Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
         }
-}
+    }
+
     public static boolean isOnline(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();

@@ -24,13 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hist_soli_pend extends AppCompatActivity {
-    String vehiculos;
     String list_soli;
     String vectorSoliPend[];
     String vectorSoli[];
-    String nombreUsuario;
-    String correo;
-    String  cl_codigo;
     private ListView listTags;
     private List<cls_list_hist_soli_pend> pagos;
     private cls_list_hist_soli_pend_adap ListPagoAdapter;
@@ -46,9 +42,9 @@ public class Hist_soli_pend extends AppCompatActivity {
         listTags = (ListView) findViewById(R.id.lsvw_pagos);
         pagos = new ArrayList<>();
         pagos.clear();
-
+        list_soli = getIntent().getStringExtra("listSoliPend");
+        lugares=getIntent().getStringExtra("lugares");
         try {
-            obtenerDatos();
             cargasListPendientes();
         } catch (IOException e) {
             e.printStackTrace();
@@ -59,13 +55,10 @@ public class Hist_soli_pend extends AppCompatActivity {
         ImageView img = (ImageView) findViewById(R.id.img_regresar);
         img.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                try {
-                    Navegacion();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Intent intent = new Intent(Hist_soli_pend.this, Menu.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -73,42 +66,13 @@ public class Hist_soli_pend extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        try {
-            Navegacion();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        Intent intent = new Intent(Hist_soli_pend.this, Menu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
+        finish();
         return super.onKeyDown(keyCode, event);
     }
 
-    public void Navegacion()throws IOException, JSONException{
-        Intent intent = new Intent(Hist_soli_pend.this, Menu.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Vehiculos", vehiculos);
-        bundle.putString("nombre", nombreUsuario);
-        bundle.putString("correo",correo);
-        bundle.putString("cl_codigo",cl_codigo);
-        Log.e("",cl_codigo);
-        bundle.putString("cedula",l);
-        bundle.putString("tipoDoc",tipoDoc);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        intent.putExtras(bundle);
-        startActivity(intent);
-        finish();
-    }
-
-    public void obtenerDatos()throws IOException,JSONException{
-        vehiculos = getIntent().getStringExtra("Vehiculos");
-        list_soli = getIntent().getStringExtra("listSoliPend");
-        nombreUsuario = getIntent().getStringExtra("nombre");
-        correo= getIntent().getStringExtra("correo");
-        cl_codigo= getIntent().getStringExtra("cl_codigo");
-        tipoDoc= getIntent().getStringExtra("tipoDoc");
-        l= getIntent().getStringExtra("cedula");
-        lugares=getIntent().getStringExtra("lugares");
-    }
 
     public void cargasListPendientes() throws IOException,JSONException{
     vectorSoliPend=list_soli.split("\\*");
@@ -134,16 +98,10 @@ public class Hist_soli_pend extends AppCompatActivity {
     registerForContextMenu(listTags);
 }
 
-public void solicitudTag(View view){
+    public void solicitudTag(View view){
     Bundle bundle = new Bundle();
     bundle.putString("codigo_trama", "9-1");
-    bundle.putString("Vehiculos", vehiculos);
     bundle.putString("lugares", lugares);
-    bundle.putString("nombre", nombreUsuario);
-    bundle.putString("cl_codigo", cl_codigo);
-    bundle.putString("correo", correo);
-    bundle.putString("tipoDoc",tipoDoc);
-    bundle.putString("cedula",l);
     Intent i = new Intent(Hist_soli_pend.this, Paso_Soli_Tag_Cli.class);
     i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     i.putExtras(bundle);

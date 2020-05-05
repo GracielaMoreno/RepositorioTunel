@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Term_Cond extends AppCompatActivity {
-    String Vehiculos;
     String valorTotal1;
     String valorConIva1;
     String valorSinIva;
@@ -32,19 +31,13 @@ public class Term_Cond extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_term__cond);
         Placa=getIntent().getStringExtra("placa");
-        tipoDoc= getIntent().getStringExtra("tipoDoc");
-        l= getIntent().getStringExtra("cedula");
         pagos =getIntent().getStringExtra("pagos");
-        Vehiculos =getIntent().getStringExtra("Vehiculos");
         valorTotal1 =getIntent().getStringExtra("valorTotal");
         valorConIva1 =getIntent().getStringExtra("valorConIva");
         valorSinIva =getIntent().getStringExtra("valorSinIva");
         valorIva1 =getIntent().getStringExtra("valorIva");
         porcIva1 =getIntent().getStringExtra("porcIva");
-        cl_codigo=getIntent().getStringExtra("cl_codigo");
         idRuta=getIntent().getStringExtra("idRuta");
-        nombre=getIntent().getStringExtra("nombre");
-        correo=getIntent().getStringExtra("correo");
         cut_codigo=getIntent().getStringExtra("cut_codigo");
         cv_codigos =getIntent().getStringExtra("cv_codigos");
         ImageView img = (ImageView) findViewById(R.id.img_regresar);
@@ -72,12 +65,7 @@ public class Term_Cond extends AppCompatActivity {
             bundle.putString("valorSinIva",valorSinIva);
             bundle.putString("valorIva",valorIva1);
             bundle.putString("porcIva",porcIva1);
-            bundle.putString("nombre",nombre);
-            bundle.putString("cl_codigo",cl_codigo);
-            bundle.putString("correo",correo);
             bundle.putString("cv_codigos",cv_codigos);
-            bundle.putString("tipoDoc",tipoDoc);
-            bundle.putString("cedula",l);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             intent.putExtras(bundle);
             startActivity(intent);
@@ -86,12 +74,6 @@ public class Term_Cond extends AppCompatActivity {
         if (idRuta.equals("recarga")){
             Intent intent = new Intent(Term_Cond.this, Recarga.class );
             Bundle bundle = new Bundle();
-            bundle.putString("Vehiculos",Vehiculos);
-            bundle.putString("nombre",nombre);
-            bundle.putString("correo",correo);
-            bundle.putString("cl_codigo",cl_codigo);
-            bundle.putString("tipoDoc",tipoDoc);
-            bundle.putString("cedula",l);
             bundle.putString("Pasadas",Pasadas);
             bundle.putString("cut_codigo",cut_codigo);
             bundle.putString("placa",Placa);

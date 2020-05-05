@@ -15,13 +15,13 @@ import org.json.JSONException;
 import java.io.IOException;
 
 public class Actu_plac extends AppCompatActivity {
-String codigoUsuario="";
-String codigoVehiculo="";
-String Vehiculos="";
-String nombre="";
-String correo;
-String tipoDoc;
-String l;
+    String codigoUsuario = "";
+    String codigoVehiculo = "";
+    String nombre = "";
+    String correo;
+    String tipoDoc;
+    String l;
+
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ String l;
         });
 
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
@@ -66,43 +67,27 @@ String l;
         return super.onKeyDown(keyCode, event);
     }
 
-    public void btn_continuar(View view)throws IOException, JSONException {
-        Intent i = new Intent(Actu_plac.this, Actu_plac_foto.class );
+    public void btn_continuar(View view) throws IOException, JSONException {
+        Intent i = new Intent(Actu_plac.this, Actu_plac_foto.class);
         Bundle bundle = new Bundle();
-        bundle.putString("cl_codigo" ,codigoUsuario);
-        bundle.putString("cut_codigo" ,codigoVehiculo);
-        bundle.putString("Vehiculos", Vehiculos);
-        bundle.putString("codigo_trama" ,getString(R.string.cm_contrato_camb_vehi));
-        bundle.putString("nombre", nombre);
-        bundle.putString("correo",correo);
+        bundle.putString("cut_codigo", codigoVehiculo);
+        bundle.putString("codigo_trama", getString(R.string.cm_contrato_camb_vehi));
         i.putExtras(bundle);
         startActivity(i);
         finish();
     }
 
-    public void navegacion()throws IOException,JSONException{
+    public void navegacion() throws IOException, JSONException {
         Intent intent = new Intent(Actu_plac.this, Menu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        Bundle bundle1=new Bundle();
-        bundle1.putString("Vehiculos", Vehiculos);
-        bundle1.putString("nombre", nombre);
-        bundle1.putString("cl_codigo", codigoUsuario);
-        bundle1.putString("correo",correo);
-        bundle1.putString("tipoDoc",tipoDoc);
-        bundle1.putString("cedula",l);
+        Bundle bundle1 = new Bundle();
         intent.putExtras(bundle1);
         startActivity(intent);
         finish();
     }
 
-    public void obtenerDatos()throws IOException,JSONException{
-        codigoUsuario=getIntent().getStringExtra("cl_codigo");
-        codigoVehiculo=getIntent().getStringExtra("cut_codigo");
-        Vehiculos=getIntent().getStringExtra("Vehiculos");
-        nombre=getIntent().getStringExtra("nombre");
-        correo=getIntent().getStringExtra("correo");
-        tipoDoc= getIntent().getStringExtra("tipoDoc");
-        l= getIntent().getStringExtra("cedula");
+    public void obtenerDatos() throws IOException, JSONException {
+        codigoVehiculo = getIntent().getStringExtra("cut_codigo");
     }
 }
 

@@ -51,15 +51,13 @@ public class Login extends AppCompatActivity {
     String p="";
     String vehiculos = "";
     String Valor= "";
-    private String[] vectorUrbanizacion;
-    public static final String SHARED_PREFS = "N/A";
-    private int seleccion = 0;
     String correo="";
     String Mensaje;
     String Usuario;
     Dialog dialog;
     String tipoDoc;
-String passEncrip;
+    String passEncrip;
+    String CodigoUsuario;
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +65,7 @@ String passEncrip;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_login);
         validarPermiso();
+        limpiarPrefer();
         //dialog.dismiss();
         try{
             if (isOnline(this) == true) {
@@ -82,6 +81,7 @@ String passEncrip;
 
             }
         });
+
         indicacion1.append(btn_soli_cont);
         makeLinksFocusable(indicacion1);
         String content2 = "Si no dispone de tag o requiere otro, ";
@@ -125,6 +125,7 @@ String passEncrip;
             }}catch (Exception e){
             Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
         }
+
     }
 
     @Override
@@ -180,7 +181,7 @@ String passEncrip;
     }
 
     //borra campos de ingreso de credenciales
-    public void limpiar(View view){
+    public void limpiar(){
         txtLogin.setText("");
         txtPass.setText("");
         chkRecoCred.setChecked(false);
@@ -191,8 +192,6 @@ String passEncrip;
         try {
 
         String CodigoResp;
-
-        String CodigoUsuario;
         String TramaRecida;
 
 
@@ -206,7 +205,7 @@ String passEncrip;
             if (isOnline(this) == true) {
                 Encriptar(p);
 
-                envia = getString(R.string.cm_login_menu_ingreso) + "," + l + "," + passEncrip;
+                envia = getString(R.string.cm_login_menu_ingreso) + "," + l + "," +passEncrip ;//passEncrip
                 ob.conectar();
                 ob.enviar(envia);
                 ob.cerrar();
@@ -222,30 +221,24 @@ String passEncrip;
                     if (chkRecoCred.isChecked()) {
                         guardar_credenciales(l, p);
                     }
+
+                    guardarVariablesSesion();
+                    if (vectorTramaRecibida.length == 8) {
+                        Mensaje = vectorTramaRecibida[1];
+                        Valor = vectorTramaRecibida[2];
+                        CodigoUsuario = vectorTramaRecibida[3];
+                        tipoDoc = vectorTramaRecibida[4];
+                        Usuario = vectorTramaRecibida[5];
+                        correo = vectorTramaRecibida[6];
+                        vehiculos = vectorTramaRecibida[7];
+                        guardarVariablesSesion();
                     if (CodigoResp.equals("1")) {
-                        if (vectorTramaRecibida.length == 8) {
-                            Mensaje = vectorTramaRecibida[1];
-                            Valor = vectorTramaRecibida[2];
-                            CodigoUsuario = vectorTramaRecibida[3];
-                            tipoDoc = vectorTramaRecibida[4];
-                            Usuario = vectorTramaRecibida[5];
-                            correo = vectorTramaRecibida[6];
-                            vehiculos = vectorTramaRecibida[7];
                             Toast.makeText(this, Mensaje + " " + Usuario, Toast.LENGTH_LONG).show();
-                            ver_list_tags(CodigoUsuario, Usuario, vehiculos);
-                        } else {
-                            Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
-                        }
+                            ver_list_tags();
+
                     }
                     if (CodigoResp.equals("2")) {
-                        if (vectorTramaRecibida.length == 8) {
-                            Mensaje = vectorTramaRecibida[1];
-                            Valor = vectorTramaRecibida[2];
-                            CodigoUsuario = vectorTramaRecibida[3];
-                            tipoDoc = vectorTramaRecibida[4];
-                            Usuario = vectorTramaRecibida[5];
-                            correo = vectorTramaRecibida[6];
-                            vehiculos = vectorTramaRecibida[7];
+
                             Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
                             envia = getString(R.string.cm_login_menu_list_pagos) + "," + CodigoUsuario;
                             ob.conectar();
@@ -254,20 +247,9 @@ String passEncrip;
                             TramaRecida = ob.cadena.toString();
                             listPagos(TramaRecida, CodigoUsuario);
 
-
-                        } else {
-                            Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
-                        }
                     }
                     if (CodigoResp.equals("3")) {
-                        if (vectorTramaRecibida.length == 8) {
-                            Mensaje = vectorTramaRecibida[1];
-                            Valor = vectorTramaRecibida[2];
-                            CodigoUsuario = vectorTramaRecibida[3];
-                            tipoDoc = vectorTramaRecibida[4];
-                            Usuario = vectorTramaRecibida[5];
-                            correo = vectorTramaRecibida[6];
-                            vehiculos = vectorTramaRecibida[7];
+
                             Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
                             envia = getString(R.string.cm_login_menu_list_pagos) + "," + CodigoUsuario;
                             ob.conectar();
@@ -276,10 +258,9 @@ String passEncrip;
                             TramaRecida = ob.cadena.toString();
                             listPagos(TramaRecida, CodigoUsuario);
 
-
-                        } else {
-                            Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
-                        }
+                    }
+                    } else {
+                        Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
                     }
                     if (CodigoResp.equals("4")) {
                         if (vectorTramaRecibida.length == 2) {
@@ -313,20 +294,14 @@ String passEncrip;
         return networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected();
     }
 
-    public void ver_list_tags(String codigoUsuario, String nombreUsuario, String vehiculos) {
+    public void ver_list_tags() {
         try{
-        Bundle bundle = new Bundle();
-        bundle.putString("cl_codigo" ,codigoUsuario);
-        bundle.putString("nombre" ,nombreUsuario);
-        bundle.putString("Vehiculos" ,vehiculos);
-        bundle.putString("correo",correo);
-        bundle.putString("tipoDoc",tipoDoc);
-        bundle.putString("cedula",l);
 
         Intent i = new Intent(Login.this, Menu.class );
         i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        i.putExtras(bundle);
+        //i.putExtras(bundle);
         startActivity(i);
+            limpiar();
         finish();
         }catch (Exception e){
             Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
@@ -486,11 +461,12 @@ String passEncrip;
             SharedPreferences preferencias=getSharedPreferences("usuario", Context.MODE_PRIVATE);
 
             SharedPreferences.Editor editor=preferencias.edit();
+            editor.clear();
+            editor.commit();
             editor.putString("usuario", usuario);
             editor.putString("clave", password);
 
             editor.commit();
-
 
         }
         catch (Exception e) {
@@ -550,7 +526,7 @@ String passEncrip;
                     if (vectorPagos.length == 2) {
                         Mensaje = vectorPagos[1];
                         Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
-                        ver_list_tags(cl_codigo,Usuario,vehiculos);
+                        ver_list_tags();
 
                     } else {
                         Toast.makeText(this, R.string.g_error_servidor, Toast.LENGTH_LONG).show();
@@ -590,15 +566,11 @@ String passEncrip;
                     bundle.putString("porcIva" ,porcIva);
                     bundle.putString("cl_codigo",cl_codigo);
                     bundle.putString("pagos",pagos);
-                    bundle.putString("nombre",Usuario);
-                    bundle.putString("correo",correo);
-                    bundle.putString("tipoDoc",tipoDoc);
-                    bundle.putString("cedula",l);
-                    bundle.putString("Vehiculos" ,vehiculos);
                     Intent i = new Intent(Login.this, Pago.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     i.putExtras(bundle);
                     startActivity(i);
+                    limpiar();
                     finish();
                     dialog.dismiss();
                 }
@@ -616,11 +588,12 @@ String passEncrip;
 
     private void cargarCredenciales(){
         try{
-        SharedPreferences preferencias=getSharedPreferences("usuario", Context.MODE_PRIVATE);
+
+        SharedPreferences preferenciasCredenciales=getSharedPreferences("usuario", Context.MODE_PRIVATE);
         String user="";
-        user=preferencias.getString("usuario","");
+        user=preferenciasCredenciales.getString("usuario","");
         String pass="";
-        pass=preferencias.getString("clave","");
+        pass=preferenciasCredenciales.getString("clave","");
         if (!user.equals("") && !pass.equals("")) {
             txtLogin.setText(user);
             txtPass.setText(pass);
@@ -638,10 +611,34 @@ String passEncrip;
         char a9 = (char) (name.charAt(4)+5);
         char a11 = (char) (name.charAt(5)+6);
         passEncrip=""+a1+a3+a5+a7+a9+a11;
-        System.out.println("The number is : "+a1+a3+a5+a7+a9+a11); // the value is 97
+    }
 
+
+    public void guardarVariablesSesion(){
+        try{
+            SharedPreferences preferencias=getSharedPreferences("datos", Context.MODE_PRIVATE);
+
+            SharedPreferences.Editor editorDatos=preferencias.edit();
+            editorDatos.putString("cl_codigo", CodigoUsuario);
+            editorDatos.putString("nombre", Usuario);
+            editorDatos.putString("Vehiculos", vehiculos);
+            editorDatos.putString("correo", correo);
+            editorDatos.putString("tipoDoc", tipoDoc);
+            editorDatos.putString("cedula", l);
+            editorDatos.commit();
+
+        }
+        catch (Exception e) {
+            Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
+        }
 
     }
+public void limpiarPrefer(){
+    SharedPreferences preferencias=getSharedPreferences("datos", Context.MODE_PRIVATE);
+    SharedPreferences.Editor editorDatos=preferencias.edit();
+    editorDatos.clear();
+    editorDatos.commit();
+}
 }
 
 

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -55,17 +56,14 @@ public class Actu_debi_auto_camb extends AppCompatActivity {
     ScrollView pepito;
     EditText var_txtCuenta;
     EditText var_txtCuentaBan;
-    EditText var_codigo;
-    InputMethodManager imm;
-    private String opcion="1";
-    private String cut_codigo="";
-    private String cl_codigo="";
+    private String opcion = "1";
+    private String cut_codigo = "";
+    private String cl_codigo = "";
     boolean valid = false;
     private String[] vectorBancos;
     private String[] vectorTrajetas;
     private String[] vectorPasadas;
-    private String nombreUsuario="";
-    String Vehiculos;
+    private String nombreUsuario = "";
     String correo;
     private cls_conexion ob;
     String cod_banco;
@@ -73,91 +71,91 @@ public class Actu_debi_auto_camb extends AppCompatActivity {
     String cod_numPasadas2;
     String cod_tarj;
     String cod_bancoTARJ;
-    String tipoDoc;
-    String l;
     String Bancos;
     String Tarjetas;
     String Pasadas;
     String[] lenguajes;
     String[] mes;
     String[] anio;
+
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_actu_debi_auto_camb);
-        try{
-            if (isOnline(this) == true) {
-        var_texto = (TextView) findViewById(R.id.lblNota1);
-        var_texto1 = (TextView) findViewById(R.id.lblNota4);
-        var_texto2 = (TextView) findViewById(R.id.lblNota8);
-        var_texto3 = (TextView) findViewById(R.id.lblNota15);
-        var_txtCuenta = (EditText) findViewById(R.id.txtCuenta);
-        var_txtCuentaBan = (EditText) findViewById(R.id.txtCuenBanc);
-
-        var_th = (TabHost) findViewById(R.id.th);
-        var_spnTipoCuen = (Spinner) findViewById(R.id.spn_tipo_cuen);
-        var_spnTipoTarj = (Spinner) findViewById(R.id.spn_tipo_tarj);
-        var_spnMes = (Spinner) findViewById(R.id.spn_mes);
-        var_spnAnio = (Spinner) findViewById(R.id.spn_anio);
-        var_spnTarjeta = (Spinner) findViewById(R.id.spn_tipo_tarj);
-        var_spnBanco = (Spinner) findViewById(R.id.spn_banco);
-        var_spnBancTarj = (Spinner) findViewById(R.id.spn_banc_tarj);
-        var_spnPasadas = (Spinner) findViewById(R.id.spn_pasadas);
-        var_spnPasadas2 = (Spinner) findViewById(R.id.spn_pasadas2);
-
         try {
-            llenar_spinner();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            if (isOnline(this) == true) {
+                var_texto = (TextView) findViewById(R.id.lblNota1);
+                var_texto1 = (TextView) findViewById(R.id.lblNota4);
+                var_texto2 = (TextView) findViewById(R.id.lblNota8);
+                var_texto3 = (TextView) findViewById(R.id.lblNota15);
+                var_txtCuenta = (EditText) findViewById(R.id.txtCuenta);
+                var_txtCuentaBan = (EditText) findViewById(R.id.txtCuenBanc);
 
+                var_th = (TabHost) findViewById(R.id.th);
+                var_spnTipoCuen = (Spinner) findViewById(R.id.spn_tipo_cuen);
+                var_spnTipoTarj = (Spinner) findViewById(R.id.spn_tipo_tarj);
+                var_spnMes = (Spinner) findViewById(R.id.spn_mes);
+                var_spnAnio = (Spinner) findViewById(R.id.spn_anio);
+                var_spnTarjeta = (Spinner) findViewById(R.id.spn_tipo_tarj);
+                var_spnBanco = (Spinner) findViewById(R.id.spn_banco);
+                var_spnBancTarj = (Spinner) findViewById(R.id.spn_banc_tarj);
+                var_spnPasadas = (Spinner) findViewById(R.id.spn_pasadas);
+                var_spnPasadas2 = (Spinner) findViewById(R.id.spn_pasadas2);
 
-        var_texto.setText("Con el propósito de recargar mi tag, Yo " + nombreUsuario + " autorizo a la EPMMOP, a ordenar en mi nombre, el débito de mi Tarjeta de Crédito detallada a continuación.");
-        var_texto1.setText("Con el propósito de recargar mi tag, Yo " + nombreUsuario + " autorizo a la EPMMOP, a ordenar en mi nombre, el débito de mi Cuenta Bancaria detallada a continuación.");
-        var_texto2.setText("Este débito se realizará cada vez que su saldo sea menor a 20 pasadas y la factura electrónica generada llegará a su correo " + correo);
-        var_texto3.setText("Este débito se realizará cada vez que su saldo sea menor a 20 pasadas y la factura electrónica generada llegará a su correo " + correo);
-
-        var_th.setup();
-        TabHost.TabSpec TS1 = var_th.newTabSpec("Tab1");
-        TS1.setIndicator("Tarjeta de Crédito");
-        TS1.setContent(R.id.tab1);
-        var_th.addTab(TS1);
-
-
-        TabHost.TabSpec TS2 = var_th.newTabSpec("Tab2");
-        TS2.setIndicator("Cuenta Bancaria");
-        TS2.setContent(R.id.tab2);
-        var_th.addTab(TS2);
-
-        var_th.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                opcion = tabId;
-                Log.i("AndroidTabsDemo", "Pulsada pestaña: " + tabId);
-            }
-        });
-
-
-        ImageView img = (ImageView) findViewById(R.id.img_regresar);
-        img.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
                 try {
-                    navegacion();
+                    llenar_spinner();
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
+                var_texto.setText("Con el propósito de recargar mi tag, Yo " + nombreUsuario + " autorizo a la EPMMOP, a ordenar en mi nombre, el débito de mi Tarjeta de Crédito detallada a continuación.");
+                var_texto1.setText("Con el propósito de recargar mi tag, Yo " + nombreUsuario + " autorizo a la EPMMOP, a ordenar en mi nombre, el débito de mi Cuenta Bancaria detallada a continuación.");
+                var_texto2.setText("Este débito se realizará cada vez que su saldo sea menor a 20 pasadas y la factura electrónica generada llegará a su correo " + correo);
+                var_texto3.setText("Este débito se realizará cada vez que su saldo sea menor a 20 pasadas y la factura electrónica generada llegará a su correo " + correo);
+
+                var_th.setup();
+                TabHost.TabSpec TS1 = var_th.newTabSpec("Tab1");
+                TS1.setIndicator("Tarjeta de Crédito");
+                TS1.setContent(R.id.tab1);
+                var_th.addTab(TS1);
+
+
+                TabHost.TabSpec TS2 = var_th.newTabSpec("Tab2");
+                TS2.setIndicator("Cuenta Bancaria");
+                TS2.setContent(R.id.tab2);
+                var_th.addTab(TS2);
+
+                var_th.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+                    @Override
+                    public void onTabChanged(String tabId) {
+                        opcion = tabId;
+                        Log.i("AndroidTabsDemo", "Pulsada pestaña: " + tabId);
+                    }
+                });
+
+
+                ImageView img = (ImageView) findViewById(R.id.img_regresar);
+                img.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        try {
+                            navegacion();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            } else {
+                Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
             }
-        });
-    }else{
-        Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
-    }}catch (Exception e){
-        Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -177,175 +175,164 @@ public class Actu_debi_auto_camb extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void btn_continuar(View view) throws IOException, JSONException{
+    public void btn_continuar(View view) throws IOException, JSONException {
 
-            try {
-                seleccionarTarjetaCredito();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+        try {
+            seleccionarTarjetaCredito();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
-    public void btn_continuar2(View view) throws IOException, JSONException{
+
+    public void btn_continuar2(View view) throws IOException, JSONException {
 
         try {
-                seleccionarCuentaBancaria();
-        }catch (IOException e){
+            seleccionarCuentaBancaria();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-    public void seleccionarTarjetaCredito()  throws IOException, JSONException {
 
-        try{
+    public void seleccionarTarjetaCredito() throws IOException, JSONException {
+
+        try {
             if (isOnline(this) == true) {
-        String mes = var_spnMes.getSelectedItem().toString();
-        String anio = var_spnAnio.getSelectedItem().toString();
-        String numTarjeta = var_txtCuenta.getText().toString();
+                String mes = var_spnMes.getSelectedItem().toString();
+                String anio = var_spnAnio.getSelectedItem().toString();
+                String numTarjeta = var_txtCuenta.getText().toString();
 
 
-        if (numTarjeta.equals("")) {
-            Toast.makeText(this, "Todos los campos son obligatorios, por favor ingrese sus datos ", Toast.LENGTH_LONG).show();
-        } else {
-
-            String TramaEnviar = getString(R.string.cm_auto_debi_auto_camb_credito) + "," + cl_codigo + "," + cut_codigo + "," + cod_bancoTARJ + "," + cod_tarj + "," + mes + "," + anio + "," + numTarjeta + "," + cod_numPasadas;
-            //TextView mensaje = (TextView) findViewById(R.id.lblMensaje);
-            //Log.e("tarjeta", TramaEnviar);
-            ob.conectar();
-            ob.enviar(TramaEnviar);
-            ob.cerrar();
-            String TramaRecida = ob.cadena.toString();
-
-            //String TramaRecida = "1|mensaje";
-            //String TramaRecida = "1|Tiene valores pendientes|205*206*207|$96.8|$80|$15|$1.81|12%|205-123456789-PBC6530-Recarga-$80-$0.00-2020/03/12-006_021_000005896-CHEVROLET AVEO ROJO*206-123456789-PBC6530-Recarga-$80-$0.00-2020/03/12-006_021_000005896-CHEVROLET AVEO ROJO*206-123456789-PBC6530-Tag-$15-$1.80-2020/03/12-006_021_000005896-CHEVROLET AVEO ROJO";
-            String[] vector_respuesta = TramaRecida.split("\\|");
-            String codigoRespuesta = vector_respuesta[0];
-            String Mensaje;
-            if (codigoRespuesta.equals("1")) {
-                Mensaje = vector_respuesta[1];
-                AlertDialog.Builder builder = new AlertDialog.Builder(Actu_debi_auto_camb.this, R.style.CustomDialog);
-                builder.setTitle("Informativo");
-                builder.setMessage(Mensaje)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                                Intent intent = new Intent(Actu_debi_auto_camb.this, Menu.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                                Bundle bundle1 = new Bundle();
-                                bundle1.putString("Vehiculos", Vehiculos);
-                                bundle1.putString("correo", correo);
-                                bundle1.putString("nombre", nombreUsuario);
-                                bundle1.putString("cl_codigo", cl_codigo);
-                                bundle1.putString("cedula", l);
-                                bundle1.putString("tipoDoc", tipoDoc);
-                                intent.putExtras(bundle1);
-                                startActivity(intent);
-                                finish();
-
-                            }
-                        });
-                builder.create().show();
-            }
-            if (codigoRespuesta.equals("2")) {
-
-                if (vector_respuesta.length == 2) {
-                    Mensaje = vector_respuesta[1];
-                    Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
-
+                if (numTarjeta.equals("")) {
+                    Toast.makeText(this, "Todos los campos son obligatorios, por favor ingrese sus datos ", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(this, getString(R.string.g_error_servidor), Toast.LENGTH_LONG).show();
+
+                    String TramaEnviar = getString(R.string.cm_auto_debi_auto_camb_credito) + "," + cl_codigo + "," + cut_codigo + "," + cod_bancoTARJ + "," + cod_tarj + "," + mes + "," + anio + "," + numTarjeta + "," + cod_numPasadas;
+                    //TextView mensaje = (TextView) findViewById(R.id.lblMensaje);
+                    //Log.e("tarjeta", TramaEnviar);
+                    ob.conectar();
+                    ob.enviar(TramaEnviar);
+                    ob.cerrar();
+                    String TramaRecida = ob.cadena.toString();
+
+                    //String TramaRecida = "1|mensaje";
+                    //String TramaRecida = "1|Tiene valores pendientes|205*206*207|$96.8|$80|$15|$1.81|12%|205-123456789-PBC6530-Recarga-$80-$0.00-2020/03/12-006_021_000005896-CHEVROLET AVEO ROJO*206-123456789-PBC6530-Recarga-$80-$0.00-2020/03/12-006_021_000005896-CHEVROLET AVEO ROJO*206-123456789-PBC6530-Tag-$15-$1.80-2020/03/12-006_021_000005896-CHEVROLET AVEO ROJO";
+                    String[] vector_respuesta = TramaRecida.split("\\|");
+                    String codigoRespuesta = vector_respuesta[0];
+                    String Mensaje;
+                    if (codigoRespuesta.equals("1")) {
+                        Mensaje = vector_respuesta[1];
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Actu_debi_auto_camb.this, R.style.CustomDialog);
+                        builder.setTitle("Informativo");
+                        builder.setMessage(Mensaje)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        Intent intent = new Intent(Actu_debi_auto_camb.this, Menu.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                        startActivity(intent);
+                                        finish();
+
+                                    }
+                                });
+                        builder.create().show();
+                    }
+                    if (codigoRespuesta.equals("2")) {
+
+                        if (vector_respuesta.length == 2) {
+                            Mensaje = vector_respuesta[1];
+                            Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Toast.makeText(this, getString(R.string.g_error_servidor), Toast.LENGTH_LONG).show();
+                        }
+                    }
+
                 }
-            }
 
-        }
+                {
 
-        {
-
-}  }else{
+                }
+            } else {
                 Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
-            }}catch (Exception e){
+            }
+        } catch (Exception e) {
             Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
         }
     }
 
     public void seleccionarCuentaBancaria() throws IOException, JSONException {
-        try{
+        try {
             if (isOnline(this) == true) {
-        String tipoCuenta = var_spnTipoCuen.getSelectedItem().toString();
-        String numCuenta = var_txtCuentaBan.getText().toString();
+                String tipoCuenta = var_spnTipoCuen.getSelectedItem().toString();
+                String numCuenta = var_txtCuentaBan.getText().toString();
 
-        if (numCuenta.equals("")) {
-            Toast.makeText(this, "Todos los campos son obligatorios, por favor ingrese sus datos", Toast.LENGTH_LONG).show();
-
-        } else {
-
-            String TramaEnviar = getString(R.string.cm_auto_debi_auto_camb_cuenta) + "," + cl_codigo + "," + cut_codigo + "," + cod_banco + "," + tipoCuenta+ "," + numCuenta + "," + cod_numPasadas2;
-
-            ob.conectar();
-            ob.enviar(TramaEnviar);
-            ob.cerrar();
-            String TramaRecida = ob.cadena.toString();
-            Log.e("cuenta", TramaEnviar);
-           // String TramaRecida = "1|mensaje";
-            String[] vector_respuesta = TramaRecida.split("\\|");
-            String codigoRespuesta = vector_respuesta[0];
-            String Mensaje;
-            if (codigoRespuesta.equals("1")) {
-                Mensaje = vector_respuesta[1];
-                AlertDialog.Builder builder = new AlertDialog.Builder(Actu_debi_auto_camb.this,R.style.CustomDialog);
-                builder.setTitle("Informativo");
-                builder.setMessage(Mensaje)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                                Intent intent = new Intent(Actu_debi_auto_camb.this, Menu.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                                Bundle bundle1 = new Bundle();
-                                bundle1.putString("Vehiculos", Vehiculos);
-                                bundle1.putString("correo", correo);
-                                bundle1.putString("nombre", nombreUsuario);
-                                bundle1.putString("cl_codigo", cl_codigo);
-                                bundle1.putString("cedula",l);
-                                bundle1.putString("tipoDoc",tipoDoc);
-                                intent.putExtras(bundle1);
-                                startActivity(intent);
-                                finish();
-
-                            }
-                        });
-                builder.create().show();
-            }
-            if (codigoRespuesta.equals("2")) {
-
-                if (vector_respuesta.length == 2) {
-                    Mensaje = vector_respuesta[1];
-                    Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
+                if (numCuenta.equals("")) {
+                    Toast.makeText(this, "Todos los campos son obligatorios, por favor ingrese sus datos", Toast.LENGTH_LONG).show();
 
                 } else {
-                    Toast.makeText(this, getString(R.string.g_error_servidor), Toast.LENGTH_LONG).show();
+
+                    String TramaEnviar = getString(R.string.cm_auto_debi_auto_camb_cuenta) + "," + cl_codigo + "," + cut_codigo + "," + cod_banco + "," + tipoCuenta + "," + numCuenta + "," + cod_numPasadas2;
+
+                    ob.conectar();
+                    ob.enviar(TramaEnviar);
+                    ob.cerrar();
+                    String TramaRecida = ob.cadena.toString();
+                    Log.e("cuenta", TramaEnviar);
+                    // String TramaRecida = "1|mensaje";
+                    String[] vector_respuesta = TramaRecida.split("\\|");
+                    String codigoRespuesta = vector_respuesta[0];
+                    String Mensaje;
+                    if (codigoRespuesta.equals("1")) {
+                        Mensaje = vector_respuesta[1];
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Actu_debi_auto_camb.this, R.style.CustomDialog);
+                        builder.setTitle("Informativo");
+                        builder.setMessage(Mensaje)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        Intent intent = new Intent(Actu_debi_auto_camb.this, Menu.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                                        startActivity(intent);
+                                        finish();
+
+                                    }
+                                });
+                        builder.create().show();
+                    }
+                    if (codigoRespuesta.equals("2")) {
+
+                        if (vector_respuesta.length == 2) {
+                            Mensaje = vector_respuesta[1];
+                            Toast.makeText(this, Mensaje, Toast.LENGTH_LONG).show();
+
+                        } else {
+                            Toast.makeText(this, getString(R.string.g_error_servidor), Toast.LENGTH_LONG).show();
+                        }
+                    }
                 }
-            }
-        }
-            }else{
+            } else {
                 Toast.makeText(this, R.string.g_error_internet, Toast.LENGTH_LONG).show();
-            }}catch (Exception e){
+            }
+        } catch (Exception e) {
             Toast.makeText(this, R.string.g_error_global, Toast.LENGTH_LONG).show();
         }
     }
 
-    public void llenar_spinner()throws IOException,JSONException{
+    public void llenar_spinner() throws IOException, JSONException {
         ob = new cls_conexion(getString(R.string.servidor_tramas), 8200);
-        cl_codigo = getIntent().getStringExtra("cl_codigo");
-        correo = getIntent().getStringExtra("correo");
+
+        SharedPreferences preferencias = getSharedPreferences("datos", Context.MODE_PRIVATE);
+        cl_codigo = preferencias.getString("cl_codigo", "");
+        correo = preferencias.getString("correo", "");
+        nombreUsuario = preferencias.getString("nombre", "");
         cut_codigo = getIntent().getStringExtra("cut_codigo");
-        nombreUsuario = getIntent().getStringExtra("nombre");
         Bancos = getIntent().getStringExtra("Bancos");
         Tarjetas = getIntent().getStringExtra("Tarjetas");
         Pasadas = getIntent().getStringExtra("Pasadas");
-        Vehiculos = getIntent().getStringExtra("Vehiculos");
-        tipoDoc = getIntent().getStringExtra("tipoDoc");
-        l = getIntent().getStringExtra("cedula");
+
         lenguajes = new String[]{"Corriente", "Ahorros"};
         mes = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
         anio = new String[]{"2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027"};
@@ -355,7 +342,7 @@ public class Actu_debi_auto_camb extends AppCompatActivity {
         vectorBancos = Bancos.split("\\*");
         vectorTrajetas = Tarjetas.split("\\*");
         vectorPasadas = Pasadas.split("\\*");
-Log.e("pasadas",Pasadas);
+        Log.e("pasadas", Pasadas);
         final ArrayList<Modelo.Pasadas> list = new ArrayList<Modelo.Pasadas>();
         String vectorpasada[];
         if (vectorPasadas.length > 0) {
@@ -466,17 +453,9 @@ Log.e("pasadas",Pasadas);
 
     }
 
-    public void navegacion()throws IOException,JSONException{
+    public void navegacion() throws IOException, JSONException {
         Intent intent = new Intent(Actu_debi_auto_camb.this, Menu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        Bundle bundle1=new Bundle();
-        bundle1.putString("Vehiculos", Vehiculos);
-        bundle1.putString("correo", correo);
-        bundle1.putString("nombre", nombreUsuario);
-        bundle1.putString("cl_codigo", cl_codigo);
-        bundle1.putString("cedula",l);
-        bundle1.putString("tipoDoc",tipoDoc);
-        intent.putExtras(bundle1);
         startActivity(intent);
         finish();
     }
